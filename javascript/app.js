@@ -1,42 +1,95 @@
 //ForEach en JavaScript
 
+const ciudades = ['CDMX', 'Londres', 'Tokio', 'Berlín', 'Roma'];
+/*El objeto Set permite almacenar valores únicos de cualquier tipo, 
+incluso valores primitivos u referencias a objetos.*/
+const ordenes = new Set([133, 231, 131, 102]);
+/*El objeto Map almacena pares clave/valor. Cualquier valor (tanto objetos como valores primitivos) 
+pueden ser usados como clave o valor.*/
+const datos = new Map();
 
-let comida = ['Carnitas', 'Barbacoa', 'Flautas', 'Quesadillas', 'Sopes'];
+datos.set('nombre', 'César');
+datos.set('profesión', 'Desarrollador web');
 
-console.log('Recorrer arreglos con forEach');
+/**
+ * La sentencia sentencia for...of ejecuta un bloque de código para cada elemento de un objeto iterable,
+ *  como lo son: String, Array, objetos similares a array (por ejemplo, arguments or NodeList), 
+ * TypedArray, Map, Set e iterables definidos por el usuario.
+ */
 
+/*entries() regresa llave y valor*/
+for (let entrada of ciudades.entries()) {
+    console.log(entrada);
+}
+/*Imprime) 
+(2) [0, "CDMX"]
+(2) [1, "Londres"]
+(2) [2, "Tokio"]
+(2) [3, "Berlín"]
+(2) [4, "Roma"]*/
 
-comida.forEach(element => {
-    console.log('--> Comida: ' + element);
-});
-
-const carrito = [
-    { id: 1, producto: 'Libro' },
-    { id: 2, producto: 'Libreta' },
-    { id: 3, producto: 'Librero' },
-    { id: 4, producto: 'Librería' },
-    { id: 5, producto: 'Libroteca' },
-];
-
-const nombreProducto = carrito.map(function(carrito) {
-    return carrito.producto;
-});
-
-console.log(nombreProducto);
-
-
-const automovil = {
-    modelo: 'Camaro',
-    motor: 1.6,
-    anio: 1969,
-    marca: 'Chevrolet'
-
+/*values() regresa el valor y es la que se entrega por defecto*/
+for (let entrada of ciudades.values()) {
+    console.log(entrada);
 }
 
-for (const auto in automovil) {
-    console.log(`${auto}: ${automovil[auto]}`);
+/* Imprime
+CDMX 
+Londres
+Tokio
+Berlín 
+Roma
+*/
 
+/*keys iterador regresa las llaves de cada uno de los elementos*/
+for (let entrada of ciudades.keys()) {
+    console.log(entrada);
+}
+/**
+ * Imprime
+ * 0
+ * 1
+ * 2
+ * 3
+ * 4
+ */
+
+for (const entradas of ordenes.entries()) {
+    console.log(entradas);
 }
 
 
-console.log(automovil);
+/*  Imprime
+   (2) [133, 133]
+   (2) [231, 231]
+   (2) [131, 131]
+   (2) [102, 102] */
+
+for (const entradas of ordenes) {
+    console.log(entradas);
+}
+/**
+ * Imprime:
+ * 133
+   231
+   131
+   102
+ */
+
+for (const entrada of datos.entries()) {
+    console.log(entrada);
+}
+
+/* Imprime
+(2) ["nombre", "César"]
+(2) ["profesión", "Desarrollador web"]
+*/
+
+for (const entrada of datos.values()) {
+    console.log(entrada);
+}
+
+/*
+César
+Desarrollador web
+*/
