@@ -1,39 +1,25 @@
-//Funciones en javaScript declaración
-/*Con parametros*/
-function saludar(nombre) {
-    console.log(`Hola ${nombre}`);
+//Expresión de funciones
+
+const suma = function(a, b) {
+    return a + b;
 }
-saludar('César');
+console.log(suma(5, 4));
 
 
-function sumar(a, b) {
-    console.log(a + b);
+const suma2 = function(a = 5, b = 10) {
+    return a + b;
 }
-
-sumar(1, 2);
-
-
-/**Con return */
-function restar(a, b) {
-    return a - b;
-}
-let resta;
-resta = restar(5, 4);
-console.log(resta);
+console.log(suma2(5));
 
 
-//Return string
-/* function saludar(nombre) {
-    if (typeof nombre === 'undefined') {
-        nombre = 'visitante';
-    }
-    return `Hola ${nombre}`;
-} */
-
-function saludar(nombre = 'Visitante') {
-    return `Hola ${nombre}`;
+const saludar = function(nombre = 'visitante') {
+    return `Hola ${nombre}`
 }
 
+console.log(saludar('César'));
 
-saludo = saludar('César');
-console.log(saludo);
+const saludar2 = function(nombre = 'visitante', edad = 39, trabajo = 'Desarrollador web') {
+    return `Hola ${nombre} tienes ${edad} años y trabajas de ${trabajo}`;
+}
+
+console.log(saludar2('César'));
