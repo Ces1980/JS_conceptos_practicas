@@ -1,25 +1,30 @@
-//Expresión de funciones
+//funciones IIFE --> Expresiones de función ejecutadas inmediatamente
 
-const suma = function(a, b) {
-    return a + b;
+
+(function() {
+    console.log('Creando un IIFE');
+})();
+
+
+(function(tecnologia) {
+    console.log(`Aprendiendo ${tecnologia}`);
+})('JavaScript');
+
+//Métodos de propiedad --> Cuando una función se pone dentro de un objeto
+
+const musica = {
+    reproducir: function() {
+        console.log('Reproduciendo música');
+    },
+    pausar: function() {
+        console.log('Pause a la música');
+    }
 }
-console.log(suma(5, 4));
 
-
-const suma2 = function(a = 5, b = 10) {
-    return a + b;
+//Los métodos también pueden guardarse /crearse fuera del objeto
+musica.borrar = function(id) {
+    console.log(`Borrando canción con el ID ${id}`);
 }
-console.log(suma2(5));
-
-
-const saludar = function(nombre = 'visitante') {
-    return `Hola ${nombre}`
-}
-
-console.log(saludar('César'));
-
-const saludar2 = function(nombre = 'visitante', edad = 39, trabajo = 'Desarrollador web') {
-    return `Hola ${nombre} tienes ${edad} años y trabajas de ${trabajo}`;
-}
-
-console.log(saludar2('César'));
+musica.reproducir();
+musica.pausar();
+musica.borrar(5);
