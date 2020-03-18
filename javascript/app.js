@@ -1,22 +1,39 @@
-///Crear arreglos de objetos en JavaScript
+//Funciones en javaScript declaración
+/*Con parametros*/
+function saludar(nombre) {
+    console.log(`Hola ${nombre}`);
+}
+saludar('César');
 
-const autos = [
-    { modelo: 'Mustang', motor: 2.4 },
-    { modelo: 'Camaro', motor: 3.2 },
-    { modelo: 'Dodge-300', motor: 2.9 },
-    { modelo: 'Sentra', motor: 21.8 }
-];
 
-console.log(autos);
-console.log(autos[1].modelo);
-
-console.log('Recorrer el arreglo de objetos......');
-for (let index = 0; index < autos.length; index++) {
-    console.log(autos[index]);
-
+function sumar(a, b) {
+    console.log(a + b);
 }
 
-console.log('Entregando solo un atributo de los objetos que se encuentran en un arreglo');
-for (let index = 0; index < autos.length; index++) {
-    console.log(autos[index].modelo);
+sumar(1, 2);
+
+
+/**Con return */
+function restar(a, b) {
+    return a - b;
 }
+let resta;
+resta = restar(5, 4);
+console.log(resta);
+
+
+//Return string
+/* function saludar(nombre) {
+    if (typeof nombre === 'undefined') {
+        nombre = 'visitante';
+    }
+    return `Hola ${nombre}`;
+} */
+
+function saludar(nombre = 'Visitante') {
+    return `Hola ${nombre}`;
+}
+
+
+saludo = saludar('César');
+console.log(saludo);
