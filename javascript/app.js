@@ -1,50 +1,22 @@
-///Crear objetos en JavaScript
+///Crear arreglos de objetos en JavaScript
 
-const persona = {
-    nombre: 'César',
-    apellido: 'Vargas',
-    profesion: 'Estudiante',
-    correo: 'cesar@vargas.com',
-    edad: '39',
-    musica: ['Rap', 'Pop', 'Regional mexicano'],
-    /*Arreglar objeto dentro de un objeto*/
-    hogar: {
-        ciudad: 'Ecatepec',
-        colonia: 'Ejidos de San Cristobal',
-        estado: 'estado de México',
-        pais: 'México'
-    },
-    /*Función declarada dentro de un objeto*/
-    nacimiento: function() {
-        let fechaDeNacimiento = new Date('1980-05-25');
-        let hoy = new Date();
-        return parseInt((hoy - fechaDeNacimiento) / (1000 * 60 * 60 * 24 * 365));
-    }
+const autos = [
+    { modelo: 'Mustang', motor: 2.4 },
+    { modelo: 'Camaro', motor: 3.2 },
+    { modelo: 'Dodge-300', motor: 2.9 },
+    { modelo: 'Sentra', motor: 21.8 }
+];
+
+console.log(autos);
+console.log(autos[1].modelo);
+
+console.log('Recorrer el arreglo de objetos......');
+for (let index = 0; index < autos.length; index++) {
+    console.log(autos[index]);
 
 }
 
-console.log(persona);
-
-console.log('Mandando llarmar un elemento del objeto, para el ejemplo el apellido : ' + persona.apellido);
-
-console.log('Imprimir el arreglo declarado dentro del objeto: ' + persona.musica);
-
-console.log('Imprimiendo un elemento del arreglo declarado dentro del objeto : ' + persona.musica[2]);
-
-console.log('Agregando elemento \'ranchero\' al arreglo declarado dentro de un objeto ');
-
-persona.musica.push('Ranchero');
-
-console.log('Arreglo con nuevo elemento: ' + persona.musica);
-
-console.log('Ver el objeto declarado dentro del objeto');
-
-console.log(persona.hogar);
-
-console.log('Accediendo al elemento \'ciudad\' del objeto declarado dentro del objeto');
-
-console.log(persona.hogar.ciudad);
-
-console.log('Fecha de nacimiento declarada dentro del objeto y obtenida por medio e una función');
-
-console.log('Edad: ' + persona.nacimiento());
+console.log('Entregando solo un atributo de los objetos que se encuentran en un arreglo');
+for (let index = 0; index < autos.length; index++) {
+    console.log(autos[index].modelo);
+}
