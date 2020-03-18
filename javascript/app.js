@@ -1,23 +1,26 @@
 //For en JavaScript
 
-for (let index = 0; index <= 20; index++) {
 
-    if (index === 10) {
-        console.log('Voy en el 10');
-        continue;
-    } else if (index == 15) {
-        break;
+let comida = ['Carnitas', 'Barbacoa', 'Flautas', 'Quesadillas', 'Sopes'];
 
-    }
-    console.log(index);
-}
-console.log('Me sali en el 15');
-
-console.log('For negativo');
-
-for (let index = 20; index > 0; index--) {
-
-
-    console.log(index);
+for (let index = 0; index < comida.length; index++) {
+    console.log(comida[index]);
 
 }
+console.log('Recorrer arreglos con forEach');
+comida.forEach(element => {
+    console.log('Comida: ' + element);
+});
+
+let i = 0;
+
+while (i < 10) {
+
+    console.log(i);
+    i++;
+}
+
+do {
+    console.log(i);
+    i--;
+} while (i > 0);
