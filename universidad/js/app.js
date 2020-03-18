@@ -1,28 +1,29 @@
-/*Event Listener click al buscador*/
+//Agregar a local Storage
 
-const encabezado = document.querySelector('#encabezado');
-const enlaces = document.querySelectorAll('.enlace');
-const boton = document.querySelector('#vaciar-carrito');
+localStorage.setItem('nombre', 'Juan');
 
-//Click
-//boton.addEventListener('click', obtenerEvento);
 
-//Doble click
-//boton.addEventListener('dblclick', obtenerEvento);
+//Session Storage
 
-//Mouse enter
-boton.addEventListener('mouseenter', obtenerEvento);
-boton.addEventListener('mouseleave', obtenerEvento);
-boton.addEventListener('mouseover', obtenerEvento);
-boton.addEventListener('mouseout', obtenerEvento);
-boton.addEventListener('mousedown', obtenerEvento);
-boton.addEventListener('mouseup', obtenerEvento);
-boton.addEventListener('mousemove', obtenerEvento);
+sessionStorage.setItem('nombre', 'Juan');
 
-function obtenerEvento(e) {
-    console.log(`Evento: ${e.type}`);
+
+//Eliminar de local Store
+
+localStorage.removeItem('nombre');
+
+//Eliminar de local Storage con variable
+
+
+let nombre1 = localStorage.removeItem('nombre1');
+console.log(nombre1);
+
+//Limpiar completamente el localStorage
+
+localStorage.clear();
+
+setTimeout(borrarSessionStorage(), 3000);
+
+function borrarSessionStorage() {
+    sessionStorage.clear();
 }
-
-boton.addEventListener('dblclick', function(e) {
-    console.log('Doble click');
-});
