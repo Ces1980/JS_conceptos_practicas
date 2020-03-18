@@ -1,26 +1,42 @@
-//For en JavaScript
+//ForEach en JavaScript
 
 
 let comida = ['Carnitas', 'Barbacoa', 'Flautas', 'Quesadillas', 'Sopes'];
 
-for (let index = 0; index < comida.length; index++) {
-    console.log(comida[index]);
-
-}
 console.log('Recorrer arreglos con forEach');
+
+
 comida.forEach(element => {
-    console.log('Comida: ' + element);
+    console.log('--> Comida: ' + element);
 });
 
-let i = 0;
+const carrito = [
+    { id: 1, producto: 'Libro' },
+    { id: 2, producto: 'Libreta' },
+    { id: 3, producto: 'Librero' },
+    { id: 4, producto: 'Librería' },
+    { id: 5, producto: 'Libroteca' },
+];
 
-while (i < 10) {
+const nombreProducto = carrito.map(function(carrito) {
+    return carrito.producto;
+});
 
-    console.log(i);
-    i++;
+console.log(nombreProducto);
+
+
+const automovil = {
+    modelo: 'Camaro',
+    motor: 1.6,
+    anio: 1969,
+    marca: 'Chevrolet'
+
 }
 
-do {
-    console.log(i);
-    i--;
-} while (i > 0);
+for (const auto in automovil) {
+    console.log(`${auto}: ${automovil[auto]}`);
+
+}
+
+
+console.log(automovil);
