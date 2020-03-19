@@ -13,7 +13,7 @@ function eventListener() {
     listaTweets.addEventListener('click', borrarTweet);
 }
 
-//Método tweet del formulario
+// -->> Método para agregar tweet del formulario
 function agregarTweet(evento) {
     //No envía datos, cancela
     evento.preventDefault();
@@ -30,9 +30,11 @@ function agregarTweet(evento) {
     li.appendChild(botonBorrar);
     //Usar el nodo padre para agregar al DOM el elemento li --> añadir el tweet a la lista
     listaTweets.appendChild(li);
+    //-- Añadir a localStorage
+    agregarTweetLocalStorage(tweet);
 }
 
-//Función para borrar tweet
+// -->> Función para borrar tweet
 function borrarTweet(evento) {
     /*CAncela el evento sin detener el resto del funcionamiento*/
     evento.preventDefault();
@@ -42,4 +44,29 @@ function borrarTweet(evento) {
         console.log(evento.target.parentElement.remove());
         alert('Tweet eliminado');
     }
+}
+
+// --> Agregar tweet a localStorage
+function agregarTweetLocalStorage(tweet) {
+    let tweets;
+    tweets = obtenerTweetsLocalStorage()
+
+    //Añadir el nuevo tweet
+    tweets.push(tweet);
+    //Convertir de string a arreglo y se arregla para localStorage
+    localStorage.setItem('tweets', JSON.stringify(tweets));
+    console.log('Nuevo arreglo');
+}
+
+function obtenerTweetsLocalStorage() {
+    let tweets;
+    //Revisamos los valores de localstorage
+    if (localStorage.getItem('tweets') === null) {
+        /**Si no hay nada retorna el arreglo vacio */
+        tweets = [];
+    } else {
+        /**Guarda los tweets agregados en formato json */
+        tweets = JSON.parse(localStorage.getItem('tweets'));
+    }
+    return tweets;
 }
