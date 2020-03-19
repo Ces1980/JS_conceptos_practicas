@@ -54,7 +54,6 @@ function borrarTweet(evento) {
 //-- >> Mostrar datos de localStorage en la lista
 function localStorageListo() {
     let tweets;
-
     tweets = obtenerTweetsLocalStorage();
     /**Muestra los arrelos en consola */
     //console.log(tweets);
@@ -78,8 +77,7 @@ function localStorageListo() {
 function agregarTweetLocalStorage(tweet) {
     let tweets;
     tweets = obtenerTweetsLocalStorage()
-
-    //Añadir el nuevo tweet
+        //Añadir el nuevo tweet
     tweets.push(tweet);
     //Convertir de string a arreglo y se arregla para localStorage
     localStorage.setItem('tweets', JSON.stringify(tweets));
