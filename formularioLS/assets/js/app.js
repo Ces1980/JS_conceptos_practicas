@@ -36,6 +36,8 @@ function agregarTweet(evento) {
     agregarTweetLocalStorage(tweet);
 }
 
+
+
 // -->> Función para borrar tweet
 function borrarTweet(evento) {
     /*CAncela el evento sin detener el resto del funcionamiento*/
@@ -43,7 +45,8 @@ function borrarTweet(evento) {
     /*Condición que identifica que si existe la clase remuev el elemento 
     señalado por la clase*/
     if (evento.target.className === 'borrar-tweet') {
-        console.log(evento.target.parentElement.remove());
+        evento.target.parentElement.remove();
+        borrarTweetLocalStorage(evento.target.parentElement.innerText);
         alert('Tweet eliminado');
     }
 }
@@ -54,7 +57,7 @@ function localStorageListo() {
 
     tweets = obtenerTweetsLocalStorage();
     /**Muestra los arrelos en consola */
-    console.log(tweets);
+    //console.log(tweets);
     /**forEach que permite mostrar en pantalla los tweets almacenados */
     tweets.forEach(function(tweet) {
         const botonBorrar = document.createElement('a');
@@ -80,7 +83,6 @@ function agregarTweetLocalStorage(tweet) {
     tweets.push(tweet);
     //Convertir de string a arreglo y se arregla para localStorage
     localStorage.setItem('tweets', JSON.stringify(tweets));
-    console.log('Nuevo arreglo');
 }
 
 //--> Comprobar que haya elementos en localStorage, retorna un arreglo
@@ -95,4 +97,26 @@ function obtenerTweetsLocalStorage() {
         tweets = JSON.parse(localStorage.getItem('tweets'));
     }
     return tweets;
+}
+
+//Eliminar tweet de localStorage
+
+function borrarTweetLocalStorage(tweet) {
+    let tweets, tweetBorrar;
+    // Elimina la X del tweet
+    tweetBorrar = tweet.substring(0, tweet.length - 1);
+    //--> Comprobar que haya elementos en localStorage, retorna un arreglo
+    tweets = obtenerTweetsLocalStorage();
+
+    tweets.forEach(function(tweet, index) {
+        /**Comprobar si el mensaje almacenado en localStorage
+         * Es igual al que se esta eliminado
+         */
+        if (tweetBorrar === tweet) {
+            /**splice permite borrar según el tweet que se elija */
+            tweets.splice(index, 1);
+        }
+
+    });
+    localStorage.setItem('tweets', JSON.stringify(tweets));
 }
