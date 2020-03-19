@@ -11,6 +11,8 @@ function eventListener() {
         agregarTweet);
     //Borrar tweet
     listaTweets.addEventListener('click', borrarTweet);
+    //Contenido cargado
+    document.addEventListener('DOMContentLoaded', localStorageListo);
 }
 
 // -->> Método para agregar tweet del formulario
@@ -46,6 +48,29 @@ function borrarTweet(evento) {
     }
 }
 
+//-- >> Mostrar datos de localStorage en la lista
+function localStorageListo() {
+    let tweets;
+
+    tweets = obtenerTweetsLocalStorage();
+    /**Muestra los arrelos en consola */
+    console.log(tweets);
+    /**forEach que permite mostrar en pantalla los tweets almacenados */
+    tweets.forEach(function(tweet) {
+        const botonBorrar = document.createElement('a');
+        botonBorrar.classList = 'borrar-tweet';
+        botonBorrar.innerText = 'X';
+        //Crear el contenido a la lista
+        const li = document.createElement('li');
+        li.innerText = tweet;
+        //Utilizar nodo li para añadir el botón de borrar al tweet mensaje
+        li.appendChild(botonBorrar);
+        //Usar el nodo padre para agregar al DOM el elemento li --> añadir el tweet a la lista
+        listaTweets.appendChild(li);
+    });
+}
+
+
 // --> Agregar tweet a localStorage
 function agregarTweetLocalStorage(tweet) {
     let tweets;
@@ -58,6 +83,7 @@ function agregarTweetLocalStorage(tweet) {
     console.log('Nuevo arreglo');
 }
 
+//--> Comprobar que haya elementos en localStorage, retorna un arreglo
 function obtenerTweetsLocalStorage() {
     let tweets;
     //Revisamos los valores de localstorage
