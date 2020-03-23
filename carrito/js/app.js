@@ -3,6 +3,8 @@ const carrito = document.getElementById('carrito');
 const cursos = document.getElementById('lista-cursos');
 /**Para insertar curso seleccionado en el carrito de compras */
 const listaCursos = document.querySelector('#lista-carrito tbody');
+/*Constante para vaciar carrito*/
+const vaciarCarritoBtn = document.getElementById('vaciar-carrito');
 
 //Listeners
 cargarEventoListeners();
@@ -10,6 +12,12 @@ cargarEventoListeners();
 function cargarEventoListeners() {
     //Dispara cuando se preciona botón "agregar carrito"
     cursos.addEventListener('click', comprarCurso);
+
+    //Cuando se elimina un curso del carrito
+    carrito.addEventListener('click', eliminarCurso);
+
+    //Al vaciar el carrito
+    vaciarCarritoBtn.addEventListener('click', vaciarCarrito);
 }
 
 //Funciones
@@ -33,13 +41,13 @@ function comprarCurso(evento) {
 function leerDatosCurso(curso) {
 
     const infoCurso = {
-        /**atributo: valor curso.querySelector('img').src  <<-- para acceder de una vez al valor del atributo */
-        imagen: curso.querySelector('img').src,
-        titulo: curso.querySelector('h4').textContent,
-        precio: curso.querySelector('.precio span').textContent,
-        id: curso.querySelector('a').getAttribute('data-id')
-    }
-    console.log(infoCurso);
+            /**atributo: valor curso.querySelector('img').src  <<-- para acceder de una vez al valor del atributo */
+            imagen: curso.querySelector('img').src,
+            titulo: curso.querySelector('h4').textContent,
+            precio: curso.querySelector('.precio span').textContent,
+            id: curso.querySelector('a').getAttribute('data-id')
+        }
+        //console.log(infoCurso);
     insertarCarrito(infoCurso);
 }
 
@@ -67,4 +75,31 @@ function insertarCarrito(curso) {
      * Se agrega el template creado
      */
     listaCursos.appendChild(row);
+}
+
+/**
+ * Elimina el curso del carrito en el DOM
+ */
+function eliminarCurso(e) {
+    e.preventDefault();
+
+    let curso;
+
+    if (e.target.classList.contains('borrar-curso')) {
+        e.target.parentElement.parentElement.remove();
+    }
+}
+
+/**
+ * Elimina los cursos del carrito en el DOM
+ */
+
+function vaciarCarrito() {
+    /*Forma lenta
+    listaCursos.innerHTML = '';*/
+    //Forma rapida y recomendada
+    while (listaCursos.firstChild) {
+        listaCursos.removeChild(listaCursos.firstChild);
+    }
+    return false;
 }
