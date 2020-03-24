@@ -87,11 +87,16 @@ function insertarCarrito(curso) {
 function eliminarCurso(e) {
     e.preventDefault();
 
-    let curso;
+    let curso, cursoId;
 
     if (e.target.classList.contains('borrar-curso')) {
         e.target.parentElement.parentElement.remove();
+        curso = e.target.parentElement.parentElement;
+        cursoId = curso.querySelector('a').getAttribute('data-id');
+        //console.log(cursoId);
     }
+
+    eliminarCursoLocalStoraged(cursoId);
 }
 
 /**
@@ -105,6 +110,9 @@ function vaciarCarrito() {
     while (listaCursos.firstChild) {
         listaCursos.removeChild(listaCursos.firstChild);
     }
+    //Vaciar localStoraged
+    vaciarLocalStoraged();
+
     return false;
 }
 
@@ -165,4 +173,28 @@ function leerLocalStorage() {
         listaCursos.appendChild(row);
     });
 
+}
+
+/**Elimina el curso por el ID en local storaged */
+
+function eliminarCursoLocalStoraged(curso) {
+
+    let cursosLs;
+    //Obtenemos el arreglo de cursos
+    cursosLs = obtenerCusrosLocalStorage();
+    //Iteramos el arreglo del curso borrado con los de loclastoraged
+    cursosLs.forEach(function(cursoLs, index) {
+
+        if (cursoLs.id === curso) {
+            cursosLs.splice(index, 1);
+        }
+    });
+    //Añadimos el arreglo actual a storage
+    localStorage.setItem('cursos', JSON.stringify(cursosLs));
+}
+
+//Elimina todos los curso de localStoraged
+
+function vaciarLocalStoraged() {
+    localStorage.clear();
 }
