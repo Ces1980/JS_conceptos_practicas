@@ -1,13 +1,26 @@
-//Variables
+/**Zona de event variables**/
+
 const email = document.getElementById('email');
 const asunto = document.getElementById('asunto');
 const mensaje = document.getElementById('mensaje');
 const btnEnviar = document.getElementById('enviar');
+const formularioEnviar = document.getElementById('enviar-mail');
+const resetBtn = document.getElementById('resetBtn');
 
-//MAndar llamar la función eventListeners()
+
+
+/**
+ * Método que contiene los registros de un evento de un objeto en especifico
+ * 
+ * El ObJeto especifico puede ser un simple elemento en un archivo, 
+ * el mismo  documento , una ventana o un  XMLHttpRequest.
+ */
 eventListeners();
 
-//event lisener
+
+
+/**Zona de event lisener**/
+
 function eventListeners() {
     //Inicio de la aplicación y desabilitar submit
     document.addEventListener('DOMContentLoaded', inicioApp);
@@ -17,9 +30,17 @@ function eventListeners() {
     asunto.addEventListener('blur', validarCampo);
     mensaje.addEventListener('blur', validarCampo);
 
+    //Boton de enviar en el submit
+    formularioEnviar.addEventListener('submit', enviarEmail);
+
+    //Boton de reset
+    resetBtn.addEventListener('click', resetFormulario);
 }
 
-//Funciones
+
+/**Zona de funciones**/
+
+
 function inicioApp() {
     //Desabilitar el envio
     btnEnviar.disabled = true;
@@ -28,7 +49,6 @@ function inicioApp() {
 //-->Valida que el campo tenga algo escrito
 function validarCampo() {
     //Se valida la longitud del texto y que no este vacio
-
     validarLongitud(this);
 
     //--> identificar el tipo de datos que recibe cada input en el formulario console.log(this.type);
@@ -49,6 +69,38 @@ function validarCampo() {
 }
 
 
+//Resetear al formulario
+function resetFormulario(e) {
+    formularioEnviar.reset();
+    e.preventDefault();
+}
+
+
+//Cuando se envía el correo
+function enviarEmail(e) {
+    const spinnerGif = document.querySelector('#spinner');
+    spinnerGif.style.display = 'block';
+
+    //Gif que envía el email
+    const enviado = document.createElement('img');
+    enviado.src = 'img/mail.gif';
+    enviado.style.display = 'block';
+
+    //Ocultar spiner y mostrar gif de enciado
+    setTimeout(function() {
+        spinnerGif.style.display = 'none';
+        document.querySelector('#loaders').appendChild(enviado);
+
+        setTimeout(function() {
+            //Remueve el gif de correo
+            enviado.remove();
+            //Resetea los campos del formulario
+            formularioEnviar.reset();
+        }, 5000);
+    }, 3000);
+    e.preventDefault();
+}
+
 // Verifica la longitud del texto en los campos
 function validarLongitud(campo) {
 
@@ -64,6 +116,7 @@ function validarLongitud(campo) {
     }
 
 }
+
 
 
 function validarEmail(campo) {
