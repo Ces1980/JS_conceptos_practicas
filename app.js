@@ -4,8 +4,11 @@ const nombre1 = 'César';
 const nombre2 = new String('Vero');
 
 
-//Tipos de datos
+///Creando numeros como objetos
 
-console.log("Tipos de datos de las instancias creadas............");
-console.log('Nombre 1: ' + typeof nombre1);
-console.log('Nombre 2: ' + typeof nombre2);
+const numero1 = 20;
+const numero2 = new Number(20);
+console.log(typeof numero1);
+console.log(typeof numero2);
+console.log(numero1);
+console.log(numero2);
