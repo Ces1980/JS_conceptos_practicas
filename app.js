@@ -22,8 +22,15 @@ const function2 = new Function('a', 'b', 'return a + b');
 const persona1 = {
     nombre: 'César',
 }
-
 const persona2 = new Object({ nombre: 'Verónica' });
+
+//Crear arreglos
+
+const arreglo1 = [1, 2, 3, 4];
+const arreglo2 = new Array(1, 2, 3, 4);
+
+console.log('Agreglo 1 :   ' + arreglo1);
+console.log(arreglo2);
 
 console.log(typeof persona1);
 console.log(typeof persona2);
