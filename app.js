@@ -8,7 +8,12 @@ const nombre2 = new String('Vero');
 
 const numero1 = 20;
 const numero2 = new Number(20);
-console.log(typeof numero1);
-console.log(typeof numero2);
-console.log(numero1);
-console.log(numero2);
+
+//Creando booleans como objetos
+
+const boleano1 = true;
+const boleano2 = new Boolean(true);
+console.log(typeof boleano1);
+console.log(typeof boleano2);
+console.log(boleano1);
+console.log(boleano2);
