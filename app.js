@@ -15,9 +15,18 @@ const boleano2 = new Boolean(true);
 const function1 = function(a, b) {
     return a + b;
 }
-const function2 = new Function('a', 'b', 'return a + b')
+const function2 = new Function('a', 'b', 'return a + b');
 
-console.log(typeof function1);
-console.log(typeof function2);
-console.log(function1(1, 2));
-console.log(function2(2, 3));
+
+//Otra forma de crear objetos
+const persona1 = {
+    nombre: 'César',
+}
+
+const persona2 = new Object({ nombre: 'Verónica' });
+
+console.log(typeof persona1);
+console.log(typeof persona2);
+console.log(persona1);
+console.log(persona2);
+console.log(persona1.nombre);
