@@ -1,33 +1,34 @@
-//Object literal
+//Método alternativo para crear objetos
 
-
-const cliente = {
-
-    nombre: 'César',
-    saldo: 200,
-    tipoCliente: function() {
+function Cliente(nombre, saldo) {
+    this.nombre = nombre;
+    this.saldo = saldo;
+    this.tipoCliente = function() {
         let tipo;
 
-        if (this.saldo > 1000 && this.saldo < 4999) {
+        if (this.saldo > 1000) {
             tipo = 'Gold';
-
-        } else if (cliente.saldo >= 5000) {
-            tipo = 'Premium';
-
+        } else if (this.saldo > 500) {
+            tipo = 'Platino';
         } else {
-            tipo = 'Normal';
+            tipo = 'Normal'
         }
 
         return tipo;
     }
 }
 
-console.log('El cliente es de tipo: ' + cliente.tipoCliente());
-console.log(`El saldo del cliente es de ${cliente.saldo}`);
-console.log(`El cliente es de tipo ${cliente.tipoCliente()}`);
+const persona = new Cliente('Pedro', 20000);
+
+const persona1 = new Cliente('César', 50000);
 
 
-/**
- * this permite acceder a los atributos del mismo objeto
- * this.atributo = objeto.atributo
- */
+
+console.log(persona);
+console.log(persona.saldo);
+console.log(persona.nombre);
+console.log(persona.tipoCliente());
+console.log(persona1);
+console.log(persona1.saldo);
+console.log(persona1.nombre);
+console.log(persona1.tipoCliente());
