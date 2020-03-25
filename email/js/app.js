@@ -131,3 +131,9 @@ function validarEmail(campo) {
         campo.classList.add('error');
     }
 }
+
+
+
+/**
+ * Acciones de formulario terminadas
+ */
