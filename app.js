@@ -1,39 +1,45 @@
-// String
-const nombre1 = 'César';
-const nombre2 = new String('Vero');
+// Prototipos
 
+function Cliente(nombre, saldo) {
+    this.nombre = nombre;
+    this.saldo = saldo;
 
-///Creando numeros como objetos
-const numero1 = 20;
-const numero2 = new Number(20);
-
-//Creando booleans como objetos
-const boleano1 = true;
-const boleano2 = new Boolean(true);
-
-//Creando funciones como objetos
-const function1 = function(a, b) {
-    return a + b;
 }
-const function2 = new Function('a', 'b', 'return a + b');
 
 
-//Otra forma de crear objetos
-const persona1 = {
-    nombre: 'César',
+//Creando un prototipo
+Cliente.prototype.tipoCliente = function() {
+
+    let tipo;
+
+    if (this.saldo > 1000) {
+        tipo = 'Premium'
+    } else if (this.saldo > 499) {
+        tipo = 'Gold'
+    } else {
+        tipo = 'Normal'
+    }
+
+    return tipo;
 }
-const persona2 = new Object({ nombre: 'Verónica' });
 
-//Crear arreglos
+//Creando protoripo que imprime saldo y nombre
+Cliente.prototype.nombreClienteSaldo = function() {
+    return `Nombre: ${this.nombre}, Tu saldo es de ${this.saldo},
+     Tipo de cliente: ${this.tipoCliente()}`;
+}
 
-const arreglo1 = [1, 2, 3, 4];
-const arreglo2 = new Array(1, 2, 3, 4);
+//Retirar Saldo
+Cliente.prototype.retirSaldo = function(retiro) {
+    return this.saldo -= retiro;
+}
 
-console.log('Agreglo 1 :   ' + arreglo1);
-console.log(arreglo2);
+const cliente1 = new Cliente('César', 5000);
+const cliente2 = new Cliente('Vero', 600);
+const cliente3 = new Cliente('Vane', 100);
 
-console.log(typeof persona1);
-console.log(typeof persona2);
-console.log(persona1);
-console.log(persona2);
-console.log(persona1.nombre);
+cliente2.retirSaldo(300);
+
+console.log(cliente1.nombreClienteSaldo());
+console.log(cliente2.nombreClienteSaldo());
+console.log(cliente3.nombreClienteSaldo());
