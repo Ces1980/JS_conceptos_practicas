@@ -5,6 +5,51 @@ function Seguro(marca, anio, tipo) {
     this.tipo = tipo;
 }
 
+//Creación de prototype cotizarSeguro(seguro)
+Seguro.prototype.cotizarSeguro = function(informacion) {
+    /**
+     * 1 = americano 1.15
+     * 2 = asiatico 1.05
+     * 3 = europeo 1.35
+     */
+    let cantidad;
+    const base = 2000;
+
+    switch (this.marca) {
+        case '1':
+            cantidad = base * 1.15;
+            break;
+
+        case '2':
+            cantidad = base * 1.05;
+            break;
+
+        case '3':
+            cantidad = base * 1.35;
+            break;
+
+    }
+
+    //Leer el año
+    const diferencia = new Date().getFullYear() - this.anio;
+    //Cadea año de diferencia hay que reducir 3% del valor del seguro
+    cantidad -= ((diferencia * 3) * cantidad) / 100;
+
+    /**
+     * Si el seguro es básico se multiplica por 30%
+     * Si el seguro es completo se multiplica por 50%
+     */
+
+    if (this.tipo === 'basico') {
+        cantidad *= 1.3;
+    } else {
+        cantidad *= 1.5;
+    }
+
+    return cantidad;
+
+}
+
 //Todo lo que se muestra
 function Interfaz() {}
 
@@ -54,9 +99,12 @@ formulario.addEventListener('submit', function(e) {
         interfaz.mostrarError('Faltan datos, revisa el formulario y prueba de nuevo', 'error')
     } else {
         //Instanciar seguro y mostrar interfaz
-        console.log('Todo correcto');
+        const seguro = new Seguro(marcaSeleccionada, anioSeleccionado, tipo);
+
+        //Cotizar el seguro con prototype creado
+        const cantidad = seguro.cotizarSeguro(seguro);
     }
-})
+});
 
 /**Fecha que permite que el auto asegurado se maximo veiteaños antiguo
  * que en la fecha actual
