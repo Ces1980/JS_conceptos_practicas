@@ -72,6 +72,41 @@ Interfaz.prototype.mostrarError = function(mensaje, tipo) {
     }, 3000);
 }
 
+//Imprime el resultado de la cotización
+Interfaz.prototype.mostrarResultado = function(seguro, total) {
+    const resultado = document.getElementById('resultado');
+    let marca;
+    switch (seguro.marca) {
+        case '1':
+            marca = 'Americano';
+            break;
+
+        case '2':
+            marca = 'Asiatico';
+            break;
+
+        case '3':
+            marca = 'Europeo';
+            break;
+    }
+
+    const div = document.createElement('div');
+
+    div.innerHTML = `
+   Tu Resumen:
+   <br>
+   Marca: ${marca}
+   <br>
+   Año: ${seguro.anio}
+   <br>
+   Tipo: ${seguro.tipo}
+   <br>
+   Total: $ ${total}
+   `;
+
+    resultado.appendChild(div);
+}
+
 // --> EventListener
 //Cotizar seguro es el id con el cual se identifica el cuerpo del formulario
 const formulario = document.getElementById('cotizar-seguro');
@@ -102,7 +137,10 @@ formulario.addEventListener('submit', function(e) {
         const seguro = new Seguro(marcaSeleccionada, anioSeleccionado, tipo);
 
         //Cotizar el seguro con prototype creado
-        const cantidad = seguro.cotizarSeguro(seguro);
+        const cantidad = seguro.cotizarSeguro();
+
+        //Mostrar el resultado
+        interfaz.mostrarResultado(seguro, cantidad);
     }
 });
 
