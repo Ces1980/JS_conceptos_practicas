@@ -1,29 +1,23 @@
-// Prototipos
-
-function Cliente(nombre, saldo) {
-    this.nombre = nombre;
-    this.saldo = saldo;
+// Función Object Create
+const Cliente = {
+    imprimirSaldo: function() {
+        return `Holan${this.nombre} tu saldo es de ${this.saldo}`
+    },
+    retirarSaldo: function(retiro) {
+        return this.saldo -= retiro;
+    }
 }
 
+//Crear el objeto y darle valor a atrinutos
 
-//Creando protoripo que imprime saldo y nombre
-Cliente.prototype.nombreClienteSaldo = function() {
-    return `Nombre: ${this.nombre}, Tu saldo es de ${this.saldo}`;
-}
+const lupe = Object.create(Cliente);
+lupe.nombre = 'Lupe';
+lupe.saldo = 500;
+console.log(lupe);
 
-const cliente1 = new Cliente('César', 5000);
 
-console.log(cliente1);
+console.log(lupe.imprimirSaldo());
 
-//Banca para empresas
+lupe.retirarSaldo(200);
 
-function Empresa(nombre, saldo, telefono, tipo) {
-    //Heredar de la clase Cliente 
-    Cliente.call(this, nombre, saldo);
-    this.telefono = telefono;
-    this.tipo = tipo;
-}
-//Heredando el prototipo "nombreClienteSaldo " de clase Cliente a la clase Empresa
-Empresa.prototype = Object.create(Cliente.prototype);
-const empresa = new Empresa('Udemy', 500000, 55556589, 'Educación');
-console.log(empresa.nombreClienteSaldo());
+console.log(lupe.imprimirSaldo());
