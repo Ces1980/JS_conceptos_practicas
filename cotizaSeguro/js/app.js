@@ -5,6 +5,7 @@ function Seguro(marca, anio, tipo) {
     this.tipo = tipo;
 }
 
+
 //Creación de prototype cotizarSeguro(seguro)
 Seguro.prototype.cotizarSeguro = function(informacion) {
     /**
@@ -30,6 +31,8 @@ Seguro.prototype.cotizarSeguro = function(informacion) {
 
     }
 
+
+
     //Leer el año
     const diferencia = new Date().getFullYear() - this.anio;
     //Cadea año de diferencia hay que reducir 3% del valor del seguro
@@ -53,8 +56,10 @@ Seguro.prototype.cotizarSeguro = function(informacion) {
 //Todo lo que se muestra
 function Interfaz() {}
 
+
+
 //Mensaje que se imprime en el html
-Interfaz.prototype.mostrarError = function(mensaje, tipo) {
+Interfaz.prototype.mostrarMensaje = function(mensaje, tipo) {
     const div = document.createElement('div');
     if (tipo === 'error') {
         div.classList.add('mensaje', 'error');
@@ -71,6 +76,9 @@ Interfaz.prototype.mostrarError = function(mensaje, tipo) {
         document.querySelector('.mensaje').remove();
     }, 3000);
 }
+
+
+
 
 //Imprime el resultado de la cotización
 Interfaz.prototype.mostrarResultado = function(seguro, total) {
@@ -93,8 +101,7 @@ Interfaz.prototype.mostrarResultado = function(seguro, total) {
     const div = document.createElement('div');
 
     div.innerHTML = `
-   Tu Resumen:
-   <br>
+   <p class = 'header'>Tu Resumen:</p>
    Marca: ${marca}
    <br>
    Año: ${seguro.anio}
@@ -103,11 +110,26 @@ Interfaz.prototype.mostrarResultado = function(seguro, total) {
    <br>
    Total: $ ${total}
    `;
-
-    resultado.appendChild(div);
+    /**Cargar el spiner para simular el envío */
+    //Seleccionando la ubicación de la imagen
+    const spinner = document.querySelector('#cargando img');
+    //Cargando la imagen
+    spinner.style.display = 'block';
+    /**
+     * Funcion setTimeout que esconde el spinner y muestra el resultado 
+     * después de 3 segundos simulando el
+     *  proceso de muestra de cotización
+     */
+    setTimeout(function() {
+        spinner.style.display = 'none';
+        resultado.appendChild(div);
+    }, 3000);
 }
 
-// --> EventListener
+
+
+/**   --> EventListener*/
+
 //Cotizar seguro es el id con el cual se identifica el cuerpo del formulario
 const formulario = document.getElementById('cotizar-seguro');
 
@@ -131,8 +153,16 @@ formulario.addEventListener('submit', function(e) {
     //Revisamos que los campos no esten vacios
     if (marcaSeleccionada === '' || anioSeleccionado === '' || tipo === '') {
         //Interfaz mosrando un error
-        interfaz.mostrarError('Faltan datos, revisa el formulario y prueba de nuevo', 'error')
+        interfaz.mostrarMensaje('Faltan datos, revisa el formulario y prueba de nuevo', 'error')
     } else {
+
+        //Limpiar resultados anteriores
+        const resultados = document.querySelector('#resultado div');
+
+        if (resultados != null) {
+            resultados.remove();
+        }
+
         //Instanciar seguro y mostrar interfaz
         const seguro = new Seguro(marcaSeleccionada, anioSeleccionado, tipo);
 
@@ -141,8 +171,11 @@ formulario.addEventListener('submit', function(e) {
 
         //Mostrar el resultado
         interfaz.mostrarResultado(seguro, cantidad);
+        interfaz.mostrarMensaje('Cotizando....', 'correcto');
     }
 });
+
+
 
 /**Fecha que permite que el auto asegurado se maximo veiteaños antiguo
  * que en la fecha actual
