@@ -57,7 +57,6 @@ Seguro.prototype.cotizarSeguro = function(informacion) {
 function Interfaz() {}
 
 
-
 //Mensaje que se imprime en el html
 Interfaz.prototype.mostrarMensaje = function(mensaje, tipo) {
     const div = document.createElement('div');
