@@ -40,22 +40,40 @@ class Interfaz {
 
 
     imprimirMensaje(mensaje, tipo) {
-        const divMensaje = document.createElement('div');
-        divMensaje.classList.add('text-center', 'alert');
-        if (tipo === 'error') {
-            divMensaje.classList.add('alert-danger');
-        } else {
-            divMensaje.classList.add('alert-sucess');
+            //Se crea el div donde paparecera la alerta con un mensaje
+            const divMensaje = document.createElement('div');
+            //Se le agregan las clases al div con boostrap
+            divMensaje.classList.add('text-center', 'alert');
+            if (tipo === 'error') {
+                divMensaje.classList.add('alert-danger');
+            } else {
+                divMensaje.classList.add('alert-success');
+            }
+            divMensaje.appendChild(document.createTextNode(mensaje));
+            //Insertar en el DOM
+            //Quitar la alerta al ingresar el gasto despues de 3 segundos
+            document.querySelector('.primario').insertBefore(divMensaje, formulario);
+            setTimeout(function() {
+                //Quita la alerta
+                document.querySelector('.primario .alert').remove();
+                //Recetaemos el formulario
+                formulario.reset();
+            }, 3000);
         }
-        divMensaje.appendChild(document.createTextNode(mensaje));
-        //Insertar en el DOM
-        //Quitar la alerta al ingresar el gasto despues de 3 segundos
-        document.querySelector('.primario').insertBefore(divMensaje, formulario);
-        setTimeout(function() {
-            document.querySelector('.primario .alert').remove();
-            //Recetaemos el formulario
-            formulario.reset();
-        }, 3000);
+        // Inserta los gastos a la lista
+    agregarGastoListado(nombre, cantidad) {
+        const gastosListado = document.querySelector('#gastos ul');
+
+        //Crear un li
+        const li = document.createElement('li');
+        li.className = 'list-group-item d-flex justify-content-between aling-items-center';
+        //Insertar el gasto
+        li.innerHTML = `
+        ${nombre}
+        <span class="badge badge-primary badge-pill">$ ${cantidad}</span>
+        `;
+        //Insertar al HTML
+        gastosListado.appendChild(li);
     }
 }
 
@@ -75,6 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const ui = new Interfaz();
         //Accedemos al presupuesto
         ui.insertarPresupuesto(cantidadPresupuesto.presupuesto);
+
     }
 });
 
@@ -82,15 +101,16 @@ formulario.addEventListener('submit', function(e) {
     e.preventDefault();
 
     //Leer del formulario de gastos
-    const nombreGastos = document.querySelector('#gasto').value;
-    const cantidadGastos = document.querySelector('#cantidad').value;
+    const nombreGasto = document.querySelector('#gasto').value;
+    const cantidadGasto = document.querySelector('#cantidad').value;
 
     //Instanciar la interfaz
     const ui = new Interfaz();
-    if (nombreGastos === '' || cantidadGastos === '') {
+    if (nombreGasto === '' || cantidadGasto === '') {
         //Dos parametros mensaje y tipo
         ui.imprimirMensaje('Hubo un error', 'error');
     } else {
-        console.log('El gasto se agrego');
+        ui.imprimirMensaje('Correcto', 'correcto')
+        ui.agregarGastoListado(nombreGasto, cantidadGasto);
     }
 });
