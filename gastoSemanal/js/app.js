@@ -62,18 +62,26 @@ class Interfaz {
         }
         // Inserta los gastos a la lista
     agregarGastoListado(nombre, cantidad) {
-        const gastosListado = document.querySelector('#gastos ul');
+            const gastosListado = document.querySelector('#gastos ul');
 
-        //Crear un li
-        const li = document.createElement('li');
-        li.className = 'list-group-item d-flex justify-content-between aling-items-center';
-        //Insertar el gasto
-        li.innerHTML = `
+            //Crear un li
+            const li = document.createElement('li');
+            li.className = 'list-group-item d-flex justify-content-between aling-items-center';
+            //Insertar el gasto
+            li.innerHTML = `
         ${nombre}
         <span class="badge badge-primary badge-pill">$ ${cantidad}</span>
         `;
-        //Insertar al HTML
-        gastosListado.appendChild(li);
+            //Insertar al HTML
+            gastosListado.appendChild(li);
+        }
+        //Comprueba el presupuesto restante
+    presupuestoRestante(cantidad) {
+        const restante = document.querySelector('span#restante')
+            //Lee o actualizar el documento restante
+        const presupuestoRestanteUsuario =
+            cantidadPresupuesto.presupuestoRestante(cantidad);
+        restante.innerHTML = `${presupuestoRestanteUsuario}`;
     }
 }
 
@@ -112,5 +120,6 @@ formulario.addEventListener('submit', function(e) {
     } else {
         ui.imprimirMensaje('Correcto', 'correcto')
         ui.agregarGastoListado(nombreGasto, cantidadGasto);
+        ui.presupuestoRestante(cantidadGasto);
     }
 });
