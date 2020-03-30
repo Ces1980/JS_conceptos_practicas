@@ -44,6 +44,7 @@ class Interfaz {
             const divMensaje = document.createElement('div');
             //Se le agregan las clases al div con boostrap
             divMensaje.classList.add('text-center', 'alert');
+            //Mensaje dependiendo el contenido con que se envien las cajas del div
             if (tipo === 'error') {
                 divMensaje.classList.add('alert-danger');
             } else {
