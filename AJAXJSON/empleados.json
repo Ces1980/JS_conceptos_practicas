@@ -1,0 +1,19 @@
+[{
+        "id": 1,
+        "nombre": "Noé",
+        "empresa": "VaesCode",
+        "trabajo": "Desarrollador Web"
+    },
+    {
+        "id": 2,
+        "nombre": "Alejandra",
+        "empresa": "VaesCode",
+        "trabajo": "Diseñadora"
+    },
+    {
+        "id": 3,
+        "nombre": "Beatriz",
+        "empresa": "VaesCode",
+        "trabajo": "Aplicaciones Móviles"
+    }
+]
