@@ -1,0 +1,36 @@
+APIS'S 
+
+API = Aplicattion Programming Interface
+
+Funciones, métodos que ofrece una librería para ser utilizada por otro software como una capa de abstracción
+
+Para acceder al servicio hay que enviar una petición estructura
+
+Ejemplo: Google Maps API
+
+
+
+REST API'S
+
+Rest = Representational State Transfer
+
+Puede ser diseñada en cualquier lenguaje backend
+
+REST Describe como deben ponerse a disposición los recursos
+
+Las API deben responder a los Request de HTTP(metodos de petición - también llamados verbos): 
+          GET, POST, PUT, DELETE, PATCH, etc.
+
+Cada aPI tiene sus propias reglas, métodos, estructuras.
+
+
+REST API EndPoints y Request
+
+Una REST API cuenta con EndPoints (o Urls) para hacer operaciones CRUD
+
+
+°Listar todos los clientes    GET    /clientes
+°Obtener un solo cliente      GET    /clientes/10
+°Crear un nuevo cliente       POST   /clientes
+°Editar un contacto           PUT    /clientes/3
+°Borrar un contacto           DELETE /clientes/8
