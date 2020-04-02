@@ -37,7 +37,28 @@ boton2.addEventListener('click', function() {
     xhr.open('GET', 'empleados.json', true);
     xhr.onload = function() {
         if (this.status === 200) {
+            //Regresa datos en formato json
             console.log(this.responseText);
+            //convierte  formato json en un objeto
+            const personal = JSON.parse(this.responseText);
+            /*Imprime en pantalla los datos en un arreglo */
+            //Se inicializa la variable porque de no hacerloal recorrer el arreglo se marcara que la variable esta indefinida
+            let htmlTemplate = '';
+            //La variable template se le indica que va ir sumando los registros recorridos al código html
+            personal.forEach(persona => {
+                htmlTemplate += `
+            <ul>
+                <li>ID: ${persona.id}</li>
+                <li>Persona: ${persona.nombre}</li>
+                <li>Empresa: ${persona.empresa}</li>
+                <li>Trabajo: ${persona.trabajo}</li>
+            </ul>
+                `;
+            });
+            //Insertar los datos del arreglo empleados en código html
+            document.getElementById('empleados').innerHTML = htmlTemplate;
+
+
         }
     }
     xhr.send();
