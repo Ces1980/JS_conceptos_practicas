@@ -4,7 +4,7 @@ const cargarPosts = document.querySelector('#cargar').addEventListener('click', 
 function cargarAPI() {
     //Crear el objeto
     const xhr = new XMLHttpRequest();
-    //Abrir la conexión
+    //Abrir la conexión consumiento la api de https://jsonplaceholder.typicode.com/
     xhr.open('GET', 'https://jsonplaceholder.typicode.com/posts', true);
 
     xhr.onload = function() {
