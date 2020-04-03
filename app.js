@@ -1,29 +1,36 @@
 /**
- * Una función de callback es una función que se pasa a otra función como un argumento,
- * que luego se invoca dentro de la función externa para completar algún tipo de rutina o acción.
- * 
- * Sin embargo, tenga en cuenta que las callbacks a menudo se utilizan para continuar con la ejecución del código 
- * después de que se haya completado una operación a sincrónica  — estas se denominan devoluciones de llamada asincrónicas. 
+ * Un callback (llamada de vuelta) es una función que recibe como argumento otra función y la ejecuta.
  */
 
-//Callback en forEach
+
+//Listado de paises
+
+const paises = ['México', 'Canada', 'EEUU', 'España', 'Brazil', 'India'];
 
 
-const ciudades = ['CDMX', 'New York', 'Tokio', 'Berlín', 'Madrid', 'Roma'];
-
-console.log(`LLamada a Callback - forEach con función de flecha: `);
-ciudades.forEach(ciudad => {
-    console.log(ciudad);
-});
-//Inline Callback
-ciudades.forEach(function(ciudad) {
-    console.log(ciudad);
-});
-
-console.log("............Con función definida");
-//Con funcion definida
-function callback(ciudad) {
-    console.log(ciudad);
+// Callback         los paises se muestran despues de 3 segundos
+function nuevoPais(pais, mostrarPaises) {
+    setTimeout(function() {
+        paises.push(pais);
+        //Se agrega un nuevo país y después se vuelve a ejecutar la funcion de mostrar pais
+        mostrarPaises();
+    }, 3000);
 }
 
-ciudades.forEach(callback);
+//Los paises se muestran después de 2 segundos
+function mostrarPaises() {
+    setTimeout(function() {
+        let html = '';
+        paises.forEach(function(pais) {
+            html += `<li>${pais}</li>`;
+        });
+        document.getElementById('app').innerHTML = html;
+    }, 2000);
+}
+
+
+//Agregar nuevo pais
+nuevoPais('Guatemala', mostrarPaises);
+
+//Mandar llamar a la función
+mostrarPaises();
