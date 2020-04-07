@@ -1,6 +1,32 @@
 document.getElementById('txtBtn').addEventListener('click', cargarTXT);
 document.getElementById('jsonBtn').addEventListener('click', cargarJSON);
+document.getElementById('apiBTN').addEventListener('click', cargarREST);
 
+
+function cargarREST() {
+    fetch('https://picsum.photos/list')
+        .then(function(res) {
+            return res.json();
+        })
+        .then(function(data) {
+            console.log(data);
+            let html = '';
+            data.forEach(function(foto) {
+                html += `
+                <ul>
+                <li>Autor: ${foto.author}</li>
+                <li>Archivo: ${foto.filename}</li>
+                <li>Formato: ${foto.format}</li>
+                <a target="_blank" href="${foto.post_url}">Ver imagen</a>
+                </ul>
+                `
+            })
+            document.getElementById('resultado').innerHTML = html;
+        })
+        .catch(function(error) {
+            console.log(error);
+        })
+}
 
 
 function cargarTXT() {
