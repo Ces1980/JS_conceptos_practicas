@@ -1,3 +1,7 @@
+//Se instancian en el archivo principal praa que la clase este disponible en toda la aplicación
+const ui = new Interfaz();
+
+
 //Leer el formulario
 const formulario = document.querySelector('#formulario');
 
@@ -17,7 +21,9 @@ formulario.addEventListener('submit', (e) => {
     //Comprobar que ambos campos tengan algo seleccionado
     if (monedaSeleccionada === '' || criptoSeleccionada === '') {
         //Arrojar una alerta de error
+        ui.mostrarMensaje('Ambos campos son obligatorios', 'alert bg-danger text-center');
+
     } else {
-        //Todo bien
+        //Todo bien, consultar la API
     }
 })
