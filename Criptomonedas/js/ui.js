@@ -57,19 +57,26 @@ class Interfaz {
 
     }
 
-    //Imprime el resultado de la cotizacion
+
 
     mostrarResultado(resultado, moneda, crypto) {
 
-        const datosMoneda = resultado[crypto][moneda];
-        console.log(datosMoneda);
-        //recortar digitos de precio
-        let precio = datosMoneda.PRICE.toFixed(2),
-            cambiosDia = datosMoneda.CHANGEPCTDAY.toFixed(2),
-            actualizado = new Date(datosMoneda.LASTUPDATE * 1000).toLocaleDateString('es-MX');
-        //-> toLocaleDateString() permite tomar una fecha y convertila al uso horario de el lugar en el cual fue declarado
-        //Construir el template
-        let templateHTML = `
+            //Imprime el resultado de la cotizacion ocultarlo
+            const resultadoAnterior = document.querySelector('#resultado > div');
+
+            if (resultadoAnterior) {
+                resultadoAnterior.remove();
+            }
+
+            const datosMoneda = resultado[crypto][moneda];
+            console.log(datosMoneda);
+            //recortar digitos de precio
+            let precio = datosMoneda.PRICE.toFixed(2),
+                cambiosDia = datosMoneda.CHANGEPCTDAY.toFixed(2),
+                actualizado = new Date(datosMoneda.LASTUPDATE * 1000).toLocaleDateString('es-MX');
+            //-> toLocaleDateString() permite tomar una fecha y convertila al uso horario de el lugar en el cual fue declarado
+            //Construir el template
+            let templateHTML = `
             <div class="card bg-warning">
                 <div class="card-body text-light">
                     <h2 class="card-title">Resultado:</h2>
@@ -79,7 +86,20 @@ class Interfaz {
                 </div>
             </div>
         `;
-        //Insertar el resultado
-        document.querySelector('#resultado').innerHTML = templateHTML;
+            //MAndar llamar la función que muestra el spinner
+            this.mostrarOcultarSpinner('block');
+
+            setTimeout(() => {
+                //Insertar el resultado
+                document.querySelector('#resultado').innerHTML = templateHTML;
+                //ocultar el spinner
+                this.mostrarOcultarSpinner('none');
+            }, 3000);
+
+        }
+        //Mostar un spinner de carga al enviar la cotización
+    mostrarOcultarSpinner(vista) {
+        const spinner = document.querySelector('.contenido-spinner');
+        spinner.style.display = vista;
     }
 }
