@@ -1,4 +1,6 @@
 //Se instancian en el archivo principal praa que la clase este disponible en toda la aplicación
+/**Se usa la clave api obtenida al crear el perfil en el sitio web CrytoCompare*/
+const cotizador = new API('6a24315c3f28ba96e19bd8a6155fc18382281dff454bb7807738e73bdea3fa38');
 const ui = new Interfaz();
 
 
