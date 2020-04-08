@@ -4,24 +4,15 @@
  * Es posible definir también funciones asíncronas a través de una expresión de función async.
  */
 
-async function obtenerClientes() {
-    //Crear un promise
-    const clientes = new Promise((resolve, reject) => {
-        setTimeout(() => {
-            resolve('Clientes descargados....');
-        }, 2000);
-    });
-    //Error o no
-    const error = true;
+async function leerTodos() {
+    //Esperar la respuesta
+    const respuesta = await fetch('https://jsonplaceholder.typicode.com/todos');
 
-    if (!error) {
-        const respuesta = await clientes;
-        return respuesta;
-    } else {
-        await Promise.reject('Hubo un error...');
-    }
+    //Procede cuando la respuesta este hecha
+    const datos = await respuesta.json();
+
+    return datos;
 }
 
-obtenerClientes()
-    .then(res => console.log(res))
-    .catch(error => console.log(error))
+leerTodos()
+    .then(usuarios => console.log(usuarios));
