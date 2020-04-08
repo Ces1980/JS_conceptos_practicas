@@ -4,32 +4,32 @@ const cotizador = new API('6a24315c3f28ba96e19bd8a6155fc18382281dff454bb7807738e
 const ui = new Interfaz();
 
 
-//Leer el formulario
-const formulario = document.querySelector('#formulario');
+// leer el formulario
 
-//eventLissener
+const formulario = document.querySelector('#formulario');
+// eventlistener
 formulario.addEventListener('submit', (e) => {
     e.preventDefault();
-    //Leer la moneda seleccionada
+
+    // leer la moneda seleccionada
     const monedaSelect = document.querySelector('#moneda');
-    //Se obtienen la ubicación de la moneda seleccionada(dolar, euro, peso, etc..)
     const monedaSeleccionada = monedaSelect.options[monedaSelect.selectedIndex].value;
 
-    //Leer la criptomoneda seleccionada
-    const criptoSelect = document.querySelector('#criptomoneda');
-    //Se obtienen la ubicación de la criptomoneda seleccionada
-    const criptoSeleccionada = criptoSelect.options[criptoSelect.selectedIndex].value;
+    // leer la criptomoneda seleccionada
+    const criptoMonedaSelect = document.querySelector('#criptomoneda');
+    const criptoMonedaSeleccionada = criptoMonedaSelect.options[criptoMonedaSelect.selectedIndex].value;
 
-    //Comprobar que ambos campos tengan algo seleccionado
-    if (monedaSeleccionada === '' || criptoSeleccionada === '') {
-        //Arrojar una alerta de error
-        ui.mostrarMensaje('Ambos campos son obligatorios', 'alert bg-danger text-center');
-
+    // comprobar que ambos campos tengan algo seleccionado
+    if (monedaSeleccionada === '' || criptoMonedaSeleccionada === '') {
+        // arrojar una alerta de error
+        ui.mostrarMensaje('Ambos Campos son Obligatorios', 'alert bg-danger text-center');
     } else {
-        //Todo bien, consultar la API
-        cotizador.obtenerValores(monedaSeleccionada, criptoSeleccionada)
+        // todo bien, consultar la api
+        cotizador.obtenerValores(monedaSeleccionada, criptoMonedaSeleccionada)
             .then(data => {
-                ui.mostrarResultado(data.resultado.RAW, monedaSelect, criptoSeleccionada);
+                ui.mostrarResultado(data.resultado.RAW, monedaSeleccionada, criptoMonedaSeleccionada);
             })
     }
+
+
 })
