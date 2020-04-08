@@ -11,6 +11,8 @@ class Interfaz {
     construirSelect() {
         cotizador.ObtenerMonedasAPI()
             .then(monedas => {
+                /**Selecionado el select del fomulario --> crear un select de opciones */
+                const select = document.querySelector('#criptomoneda');
                 /**
                  * El método Object.entries() devuelve una matriz de pares propios de 
                  * una propiedad enumerable [key, value] de un objeto dado, 
@@ -23,9 +25,15 @@ class Interfaz {
                  *  Esta Iterará sobre cualquiera de los elementos de una colección que tengan 
                  * la propiedad [Symbol.iterator].
                  */
+                //-> Iterar por los resultados de la api
                 for (const [key, value] of Object.entries(monedas.monedas.Data)) {
-
-                    console.log(key);
+                    //Añadir el simbol y el nombre como opciones
+                    const opcion = document.createElement('option');
+                    //Se obtiene los value al recorrerse el for
+                    opcion.value = value.Symbol;
+                    //Obtener el texto que va a estar dentro de los opciones
+                    opcion.appendChild(document.createTextNode(value.CoinName));
+                    select.appendChild(opcion);
                 }
             })
     }
