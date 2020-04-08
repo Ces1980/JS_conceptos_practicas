@@ -56,4 +56,11 @@ class Interfaz {
         }, 3000);
 
     }
+
+    //Imprime el resultado de la cotizacion
+
+    mostrarResultado(resultado, moneda, criptomoneda) {
+
+        console.log(resultado, [criptomoneda][moneda]);
+    }
 }

@@ -29,7 +29,7 @@ formulario.addEventListener('submit', (e) => {
         //Todo bien, consultar la API
         cotizador.obtenerValores(monedaSeleccionada, criptoSeleccionada)
             .then(data => {
-                console.log(data);
+                ui.mostrarResultado(data.resultado.RAW, monedaSelect, criptoSeleccionada);
             })
     }
 })
