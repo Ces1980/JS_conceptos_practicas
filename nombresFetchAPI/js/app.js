@@ -33,16 +33,13 @@ function cargarNombres(e) {
 
     // Código de FETCH API AQUI
     fetch(url)
-        .then(function(res) {
-            //Tipo de respuesta
-            return res.json();
-        })
+        .then(res => res.json())
         .then(function(data) {
             //Código html que se va a imprimir con la respuesta de la api consultada
             let html = '<h2>Nombres generados</h2>';
             //Concatenado los valores obtenidos
             html += `<ul class="lista">`;
-            data.forEach(function(nombre) {
+            data.forEach(nombre => {
                 html += `
                 <li>${nombre.name}</li>
                 `;
@@ -50,7 +47,5 @@ function cargarNombres(e) {
             html += `</ul>`;
             document.getElementById('resultado').innerHTML = html;
         })
-        .catch(function(error) {
-            console.log(error);
-        })
+        .catch(error => console.log(error))
 }
