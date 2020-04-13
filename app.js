@@ -4,14 +4,28 @@
   tanto de arreglos como de propiedades de objetos, en variables distintas. 
  */
 const cliente = {
-    nombre: 'César',
-    tipo: 'premium'
-    
+    tipo: 'Premium',
+    nombre: 'Vanessa',
+    datos: {
+        ubicacion:{
+            ciudad: 'Ecatepec',
+            pais: 'México'
+        },
+        cuenta:{
+            desde: '10-12-1012',
+            saldo: 5000
+        }
+    }
 }
 
+let {datos: {ubicacion}} = cliente;
+let {datos: {cuenta}} = cliente;
 
-({nombre, tipo} = cliente);
+console.log(cliente)
+console.log(ubicacion)
+console.log(ubicacion.ciudad)
+console.log(ubicacion.pais)
 
-
-console.log(nombre)
-console.log(tipo)
+console.log(cuenta)
+console.log(cuenta.desde)
+console.log(cuenta.saldo)
