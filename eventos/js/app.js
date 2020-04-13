@@ -17,9 +17,14 @@ document.getElementById('buscarBtn').addEventListener('click', (e)=> {
     //Revisar que haya algo escrito en el buscador
     if(textoBuscador !== ''){
         //Cuando si hay una busqueda
-        eventBrite.obtenerEventos(textoBuscador,categoriaSeleccionada)
+        eventBrite.obtenerEventos(textoBuscador, categoriaSeleccionada)
         .then(eventos =>{
-            console.log(eventos);
+            if(eventos.eventos.events.lenght > 0){
+                console.log('Si hay eventos');
+            }
+            else{
+                console.log('No hay eventos');
+            }
         })
     }else{
         //Mostra mensaje para que imprima algo

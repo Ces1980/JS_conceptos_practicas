@@ -1,18 +1,17 @@
-//Async Await
-/**
- * La declaración de función async define una función asíncrona, la cual devuelve un objeto AsyncFunction.
- * Es posible definir también funciones asíncronas a través de una expresión de función async.
+
+/*La sintaxis de asignación de desestructuración (destructuring assignment)
+ es una expresión que posibilita la extracción de datos,
+  tanto de arreglos como de propiedades de objetos, en variables distintas. 
  */
-
-async function leerTodos() {
-    //Esperar la respuesta
-    const respuesta = await fetch('https://jsonplaceholder.typicode.com/todos');
-
-    //Procede cuando la respuesta este hecha
-    const datos = await respuesta.json();
-
-    return datos;
+const cliente = {
+    nombre: 'César',
+    tipo: 'premium'
+    
 }
 
-leerTodos()
-    .then(usuarios => console.log(usuarios));
+
+({nombre, tipo} = cliente);
+
+
+console.log(nombre)
+console.log(tipo)
