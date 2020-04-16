@@ -2,14 +2,11 @@
 
 
 function reservacion(completo, opciones){
-    opciones= opciones || {};
+    /**La posición en los parametros es corrsponiente a la declarada en la función */
+    let {metodoPago, cantidad, dias} = opciones;
     
     /**Mapear cada una de las cantidades */
-    let metodo = opciones.metodoPago,
-                cantidad = opciones.cantidad,
-                dias = opciones.dias;
-
-                console.log(metodo)
+                console.log(metodoPago)
                 console.log(cantidad)
                 console.log(dias)
 }
