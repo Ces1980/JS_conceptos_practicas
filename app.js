@@ -1,15 +1,28 @@
 //Destrcturing forma anterior
 
 
-function reservacion(completo, opciones){
-    /**La posición en los parametros es corrsponiente a la declarada en la función */
-    let {metodoPago, cantidad, dias} = opciones;
+function reservacion(completo, 
+/* Declarar valores por default */
+{
+    metodoPago = 'efectivo', 
+    cantidad = 0, 
+    dias = 0
+}= {}
+)
+{
+
+    if (completo) {
+        console.log('Proceder a acompletar...')
+    }else{
+        console.log('Abandonar...')
     
+    }
     /**Mapear cada una de las cantidades */
                 console.log(metodoPago)
                 console.log(cantidad)
                 console.log(dias)
 }
+
 
 
 reservacion(
