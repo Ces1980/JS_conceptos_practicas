@@ -1,15 +1,14 @@
+//
+const ciudades = ['Londres','Nuw York', 'CDMX', 'Madrid'];
 
-/*La sintaxis de asignación de desestructuración (destructuring assignment)
- es una expresión que posibilita la extracción de datos,
-  tanto de arreglos como de propiedades de objetos, en variables distintas. 
- */
-const cliente = {
-    nombre:'Aurelio',
+/* const [
+    primeraCiudad, 
+    segundaCiudad,
+    terceraCiudad,
+    cuartaCiudad
+] = ciudades; */
 
-}
+/***Accediendo a un valor especifico según la posición en el arreglo */
+const [,,,ciudad]= ciudades;
 
-let {nombre, tipo='Básico', saldo= 0} = cliente;
-
-console.log(nombre)
-console.log(tipo)
-console.log(saldo)
+console.log(ciudad)
