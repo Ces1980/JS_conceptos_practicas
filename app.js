@@ -14,13 +14,13 @@ carrito.add('Disco #3');
 //Un disco cuando observa un valor duplicado no lo añade a la colección
 carrito.add('Disco #3');
 
-//Comprobando que existe un valor en un SET
-console.log(carrito.has('Guitarra'));
-//Eliminar un valor del SET
-carrito.delete('Camisa');
-
-/* Vaciar completamente el SET */
-carrito.clear();
+//Comprobando que existe un valor en un SET console.log(carrito.has('Guitarra'));
+//Recorrer set con foreach
+console.log('Pinta todos los elementos de la coleccion SET')
+carrito.forEach((producto, index) => {
+    console.log(`${index}: ${producto}`)
+});
+/* En un SET la llave y el valor son iguales */
 
 console.log(carrito)
 console.log(carrito.size)
