@@ -22,5 +22,9 @@ carrito.forEach((producto, index) => {
 });
 /* En un SET la llave y el valor son iguales */
 
-console.log(carrito)
-console.log(carrito.size)
+/* Convertir un SET a Arreglo */
+const arregloCarrito = [...carrito];
+console.log(arregloCarrito);
+/**Al convertir un SET en un arreglo se le pueden aplicar todas las caracteristicas
+ * se pueden utilizar en arreglo
+ */
