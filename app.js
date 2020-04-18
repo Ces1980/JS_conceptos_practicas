@@ -1,35 +1,30 @@
 //MAPS
 
 /* Inicializando un MAP */
-let cliente = new Map();
-/**Agredando valor a un map */
-cliente.set('nombre', 'Vero');
-cliente.set('tipo', 'premium');
-cliente.set('saldo', 3000);
-/**Accediendo a los valores de un MAP */
-/* console.log(cliente.get('nombre'));
-console.log(cliente.get('tipo'));
-console.log(cliente.get('saldo')); */
+let paciente = new Map(
+    /* Pasando parametros por default a un map */
+    /* Cada atributo requiere de sus propios corchetes */
+    [['nombre', 'paciente'],
+    ['habitacion', 'no definido'],
+    ['alta', 'Recien ingresado']]
+);
 
-/* Métodos para los maps */
-console.log(cliente)
-//Tamaño del map
-console.log(cliente.size)
-//Comporbando valor dentro del MAP
-console.log(cliente.has('apellido'));
-//devolver el valor de MAp
-console.log(cliente.get('tipo'));
-//Borrar una propiedad del MAP
-console.log(cliente.delete('nombre'));
+paciente.set('nombre', 'César');
+/* MAP no accepta duplicados, toma el último valor */
+paciente.set('habitacion', 404);
+paciente.set('habitacion', 200);
 
-console.log(cliente)
+/* Recorrer un MAP con forEach */
+console.log('Recorrido del forEach')
+paciente.forEach(datos => {
+    console.log(datos)
+});
 
-//Agregando propiedad al map
-cliente.set('nombre', 'Gloria');
+/* Recorrdio con forEach y con index*/
+console.log('Recorrdio con forEach y con index')
+paciente.forEach((datos, index) => {
+    console.log(`${index}: ${datos}`)
+});
 
-console.log(cliente)
 
-/* Limpiando el MAP */
-
-cliente.clear();
-console.log(cliente)
+console.log(paciente);
