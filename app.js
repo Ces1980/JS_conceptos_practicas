@@ -1,21 +1,23 @@
 //GENERADORES
 
-// * -> le indica a javaScript qye vas a crear un generador 
-function *crearGenerador(){
-    //yield --> acepta cualquier dato primitivo
-    yield 1;
-    yield 'Nombre';
-    yield 3+3;
-    yield true;
+function *nuevoGenerador(carrito) {
 
+        for (let i = 0; i < carrito.length; i++) {
+            yield carrito[i];
+            
+        }
 }
 
-const iterador = crearGenerador();
+// Creamos el carrito
+const carrito = ['Producto1','Producto2','Producto3','Producto4','Producto5'];
 
-/* Recoorer los campos */
-console.log(iterador.next().value);
-console.log(iterador.next().value);
-console.log(iterador.next().value);
-console.log(iterador.next().value);
+// Recorrimos el carrito
+let iterador = nuevoGenerador(carrito);
 
-
+//Imprimimos
+console.log(iterador.next().value);
+console.log(iterador.next().value);
+console.log(iterador.next().value);
+console.log(iterador.next().value);
+console.log(iterador.next().value);
+console.log(iterador.next().value);
