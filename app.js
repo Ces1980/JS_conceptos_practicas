@@ -1,30 +1,32 @@
-//MAPS
+//ITERADORES
 
-/* Inicializando un MAP */
-let paciente = new Map(
-    /* Pasando parametros por default a un map */
-    /* Cada atributo requiere de sus propios corchetes */
-    [['nombre', 'paciente'],
-    ['habitacion', 'no definido'],
-    ['alta', 'Recien ingresado']]
-);
+function crearIterador(carrito){
+    //Inicializampos el indice
+    let i = 0;
+    //Declaramos el retorno
+    return{
+        //declaramos una función que condiciona el fin de la iteracción
+        siguiente: () => {
+            //inicializamos la condicion de la finalicacion de la iteración
+            let fin = (i >= carrito.length);
+            //declaramos un ternario para dar el valor
+            let valor = !fin ? carrito[i++] : undefined;
+            //regresamos valor y atributo  
+            return{
+                fin: fin,
+                valor: valor
+            }
+        }
+    }
+}
 
-paciente.set('nombre', 'César');
-/* MAP no accepta duplicados, toma el último valor */
-paciente.set('habitacion', 404);
-paciente.set('habitacion', 200);
+const carrito = ['Producto','Producto1', 'Producto2', 'Producto3', 'Producto4'];
 
-/* Recorrer un MAP con forEach */
-console.log('Recorrido del forEach')
-paciente.forEach(datos => {
-    console.log(datos)
-});
+const recorrerCarrito = crearIterador(carrito);
 
-/* Recorrdio con forEach y con index*/
-console.log('Recorrdio con forEach y con index')
-paciente.forEach((datos, index) => {
-    console.log(`${index}: ${datos}`)
-});
-
-
-console.log(paciente);
+console.log(recorrerCarrito.siguiente());
+console.log(recorrerCarrito.siguiente());
+console.log(recorrerCarrito.siguiente());
+console.log(recorrerCarrito.siguiente());
+console.log(recorrerCarrito.siguiente());
+console.log(recorrerCarrito.siguiente());
