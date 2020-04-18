@@ -1,17 +1,26 @@
 //EXPRESIONES REGULARES
-/*  Las expresiones regulares son patrones utilizados para encontrar 
-*  una determinada combinación de caracteres dentro de una cadena de texto. 
-*  En JavaScript, las expresiones regulares también son objetos. 
-*  Estos patrones se utilizan en los métodos exec y test de RegExp, 
-*  así como los métodos match, replace, search y split de String.  */
-
 let valor, expReg;
 
-expReg = /[123456789]/;
-/* expReg con rango */
+//-d -> digito
+//-D -> mayusculas
 expReg =/[1-9]/;
-
 valor = 1992;
-/**Verificar si los numeros de valor se encuentran dentro de la expresion regular */
+
+//Una fecha en exp regular 20-10-2020
+expReg = /\d\d-\d\d-\d\d\d\d/;
+valor= '20-10-2020';
+
+//  Hora 10:30
+expReg = /\d\d:\d\d/;
+valor= '10:30';
+
+//  Hora 10:30 am
+expReg = /\d\d:\d\d \D\D/;
+valor= '10:30 AM';
+
+//Cadenas de digitos
+expReg = /\d+/;
+valor= 12365897451254;
+
 console.log(expReg.test(valor));
 
