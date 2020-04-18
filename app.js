@@ -1,32 +1,21 @@
-//ITERADORES
+//GENERADORES
 
-function crearIterador(carrito){
-    //Inicializampos el indice
-    let i = 0;
-    //Declaramos el retorno
-    return{
-        //declaramos una función que condiciona el fin de la iteracción
-        siguiente: () => {
-            //inicializamos la condicion de la finalicacion de la iteración
-            let fin = (i >= carrito.length);
-            //declaramos un ternario para dar el valor
-            let valor = !fin ? carrito[i++] : undefined;
-            //regresamos valor y atributo  
-            return{
-                fin: fin,
-                valor: valor
-            }
-        }
-    }
+// * -> le indica a javaScript qye vas a crear un generador 
+function *crearGenerador(){
+    //yield --> acepta cualquier dato primitivo
+    yield 1;
+    yield 'Nombre';
+    yield 3+3;
+    yield true;
+
 }
 
-const carrito = ['Producto','Producto1', 'Producto2', 'Producto3', 'Producto4'];
+const iterador = crearGenerador();
 
-const recorrerCarrito = crearIterador(carrito);
+/* Recoorer los campos */
+console.log(iterador.next().value);
+console.log(iterador.next().value);
+console.log(iterador.next().value);
+console.log(iterador.next().value);
 
-console.log(recorrerCarrito.siguiente());
-console.log(recorrerCarrito.siguiente());
-console.log(recorrerCarrito.siguiente());
-console.log(recorrerCarrito.siguiente());
-console.log(recorrerCarrito.siguiente());
-console.log(recorrerCarrito.siguiente());
+
