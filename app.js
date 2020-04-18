@@ -1,30 +1,26 @@
-//SYMBOL
+//SET
+/* Los objetos Set son colecciones de valores. 
+Se puede iterar sus elementos en el orden de su inserción.
+Un valor en un Set sólo puede estar una vez; éste es único en la colección Set. */
 
 
-let nombre = Symbol();
-let apellido  = Symbol();
+/* Inicializando un SET */
+let carrito = new Set();
+//Agregando elementos a la collección
+carrito.add('Camisa');
+carrito.add('Disco #1');
+carrito.add('Disco #2');
+carrito.add('Disco #3');
+//Un disco cuando observa un valor duplicado no lo añade a la colección
+carrito.add('Disco #3');
 
-//Crear una persona
-let persona = {}
-//Se agrega propiedad nueva al objeto
-persona.nombre='César';
-//Agegrar a persona atributo symbol
-persona[nombre] = 'César';
-persona[apellido]= 'Vargas';
-//Agregando más propiedades al objeto persona
-persona.saldo=100;
-persona.tipoCliente= 'Normal';
+//Comprobando que existe un valor en un SET
+console.log(carrito.has('Guitarra'));
+//Eliminar un valor del SET
+carrito.delete('Camisa');
 
-//Accediendo a las propiedades del objeto
-console.log(persona.nombre)
-//Accediendo al Symbol del objeto
-console.log(persona[nombre])
+/* Vaciar completamente el SET */
+carrito.clear();
 
-//Los Symbols tienen propiedades privadas
-//Con el siguiente for se muestran las propiedades del objeto pero no 
-//las propiedades declaradas como SYMBOL
-for (let i in persona) {
-    console.log(`${i} : ${persona[i]}`);
-}
-
-console.log(persona)
+console.log(carrito)
+console.log(carrito.size)
