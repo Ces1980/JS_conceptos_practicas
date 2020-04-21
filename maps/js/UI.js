@@ -48,16 +48,24 @@ class UI {
             //destructuring
             const {latitude, longitude, calle, regular, premium } = dato; 
 
-            //Agregar el pin
+            //Crear pop-up método de Leaflet
+            const opcionesPopUp = L.popup()
+                .setContent(`
+                    <p>Calle: ${calle}</p>
+                    <p><b>Regular:</b>$ ${regular}</p>
+                    <p><b>Premuim:</b>$ ${premium}</p>
+                `);
+
             const marker = new L.marker([
                 parseFloat(latitude),
                 parseFloat(longitude)
-            ]);
+            ]).bindPopup(opcionesPopUp);
+
 //Se ha agregado los markers(señalamientos) de las gasolinerias a la capa 
 //pero de momento no estan visibles esas marcas
             this.markers.addLayer(marker);
         });
-        /* Incrsutar las marcas al mapa */
+        /* Incrustar las marcas al mapa */
         this.markers.addTo(this.mapa);
 
     }
