@@ -3,6 +3,12 @@ class UI {
 
         //Instanciar la API y guardada como propiedad
         this.api = new API();
+
+        //Crear los markers con layerGroup de Leaflet
+
+        /* LayerGroup es una clase de 
+        https://leafletjs.com/ */
+        this.markers = new L.LayerGroup();
         // Iniciar el mapa
         this.mapa = this.inicializarMapa();
 
@@ -34,6 +40,25 @@ class UI {
     }
 
     mostrarPines(datos){
-        console.log(datos);
+        //Limpiar los markers
+        this.markers.clearLayers();
+
+        //Recorrer los estableciemientos
+        datos.forEach(dato =>{
+            //destructuring
+            const {latitude, longitude, calle, regular, premium } = dato; 
+
+            //Agregar el pin
+            const marker = new L.marker([
+                parseFloat(latitude),
+                parseFloat(longitude)
+            ]);
+//Se ha agregado los markers(señalamientos) de las gasolinerias a la capa 
+//pero de momento no estan visibles esas marcas
+            this.markers.addLayer(marker);
+        });
+        /* Incrsutar las marcas al mapa */
+        this.markers.addTo(this.mapa);
+
     }
 }
