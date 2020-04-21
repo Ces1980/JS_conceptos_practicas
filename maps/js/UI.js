@@ -31,22 +31,22 @@ class UI {
         //Obtener datos esta declarada en la clase API pero como API
         //se va a instanciar desdecla clase UI se puede utilizar
         this.api.obtenerDatos()
-        .then(datos =>{
-            const resultado  = datos.respuestaJSON.results;
+            .then(datos => {
+                const resultado = datos.respuestaJSON.results;
 
-            //Ejecutar la función para mostrar los pines
-            this.mostrarPines(resultado);
-        })
+                //Ejecutar la función para mostrar los pines
+                this.mostrarPines(resultado);
+            })
     }
 
-    mostrarPines(datos){
+    mostrarPines(datos) {
         //Limpiar los markers
         this.markers.clearLayers();
 
         //Recorrer los estableciemientos
-        datos.forEach(dato =>{
+        datos.forEach(dato => {
             //destructuring
-            const {latitude, longitude, calle, regular, premium } = dato; 
+            const { latitude, longitude, calle, regular, premium } = dato;
 
             //Crear pop-up método de Leaflet
             const opcionesPopUp = L.popup()
@@ -59,14 +59,36 @@ class UI {
             const marker = new L.marker([
                 parseFloat(latitude),
                 parseFloat(longitude)
-            ]).bindPopup(opcionesPopUp);
+            ])
+                .bindPopup(opcionesPopUp);
 
-//Se ha agregado los markers(señalamientos) de las gasolinerias a la capa 
-//pero de momento no estan visibles esas marcas
+            //Se ha agregado los markers(señalamientos) de las gasolinerias a la capa 
+            //pero de momento no estan visibles esas marcas
             this.markers.addLayer(marker);
         });
         /* Incrustar las marcas al mapa */
         this.markers.addTo(this.mapa);
 
+    }
+
+    // Obtiene las sugerencias de la REST API
+    obtenerSugerencias(busqueda) {
+        this.api.obtenerDatos()
+            .then(datos => {
+                // Obtener los resultados
+                const resultados = datos.respuestaJSON.results;
+
+                // Enviar el JSON y la busqueda al Filtro
+                this.filtrarSugerencias(resultados, busqueda);
+            })
+    }
+
+
+    //filtra las sugerencias en base al input
+    filtrarSugerencias(resultados, busqueda) {
+        const filtro = resultados.filter(filtro => filtro.calle.indexOf(busqueda) !== -1);
+        console.log(filtro)
+        // Mostrar pines del Filtro
+        this.mostrarPines(filtro);
     }
 }
