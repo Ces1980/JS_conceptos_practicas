@@ -1,6 +1,6 @@
-import { nombreCliente, ahorro, dinero, mostrarInformacion, saludoCobro } from './cliente.js'
+import * as cliente from './cliente.js'
 
-
+console.log(cliente);
 
 
 const info = mostrarInformacion(nombreCliente, ahorro);
