@@ -96,6 +96,11 @@ h2 {
 
 
 #resultado {
+    text-align: center;
     white-space: pre-wrap;
     padding: 2rem;
+}
+
+#resultado:hover {
+    background-color: beige;
 }

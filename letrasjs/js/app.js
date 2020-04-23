@@ -26,7 +26,11 @@ UI.formularioBuscar.addEventListener('submit', (e) => {
         api.consultarAPI()
             .then(data => {
                 if (data.respuesta.lyrics) {
-                    console.log('Si existe');
+                    // La cancion existe
+                    const letra = data.respuesta.lyrics;
+                    console.log(letra);
+                    // PAra mostrar dentro del div 'divResultado'
+                    UI.divResultado.textContent = letra;
                 } else {
                     /* La canción no existe */
                     UI.divMensajes.innerHTML = 'La canción no existe, prueba con otra busqueda';
@@ -34,6 +38,8 @@ UI.formularioBuscar.addEventListener('submit', (e) => {
                     setTimeout(() => {
                         UI.divMensajes.innerHTML = '';
                         UI.divMensajes.classList.remove('error');
+                        // Recetear el formulario
+                        UI.formularioBuscar.reset();
                     }, 3000);
                 }
             });
