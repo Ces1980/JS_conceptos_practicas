@@ -1,12 +1,23 @@
+
+// Esportar variables
 export const nombreCliente = 'César';
 export let ahorro = 200;
 
-export let dinero = 2300;
 
+// Exportar funciones
 export function mostrarInformacion(nombreCliente, ahorro) {
     return `Cliente: ${nombreCliente}  Ahorro: ${ahorro}`;
 }
 
-export function saludoCobro(nombreCliente, dinero) {
-    return `Saludo: ${nombreCliente} Debe: ${dinero}`;
+// Exportando clase
+export class Cliente {
+    constructor(nombre, ahorro) {
+        this.nombre = nombre;
+        this.ahorro = ahorro;
+    }
+
+    mostrarInformacion() {
+        return `Cliente: ${this.nombre}  Ahorro: ${this.ahorro}`;
+    }
 }
+
