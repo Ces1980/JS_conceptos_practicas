@@ -3,7 +3,7 @@ const comprarBoleto = (function () {
 
     //Privado
     let evento = 'Conferencia JS 2020';
-    const adquirirBoleto  =() =>{
+    const adquirirBoleto = () => {
         const elemento = document.createElement('p');
         elemento.textContent = `Comprando boleto para ${evento}`;
         document.querySelector('#app').appendChild(elemento);
@@ -13,7 +13,7 @@ const comprarBoleto = (function () {
     return {
         // evento
         mostrarBoleto: function () {
-           adquirirBoleto();
+            adquirirBoleto();
         }
     }
 })();
