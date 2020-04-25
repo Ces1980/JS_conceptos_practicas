@@ -7,9 +7,11 @@ const comparBoleto = ( function(){
 
     //Publico --> solo puede ser accedido con un return
     return{
-        evento
+        mostarBoleto: function(){
+            console.log(evento)
+        }
     }
 })();
 
 
-console.log(comparBoleto.evento)
+comparBoleto.mostarBoleto()
