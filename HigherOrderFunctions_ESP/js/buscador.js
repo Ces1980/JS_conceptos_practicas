@@ -142,27 +142,63 @@ function obtenerAutos() {
 
 }
 
+// Datos para la busqueda declarado de manera global porque va a permitir que se acceda a el por distintos métodos
+let datosBusqueda = {
+    marca: '',
+    year: '',
+    minimo: '',
+    maximo: '',
+    puertas: '',
+    transmision: '',
+    color: ''
+}
+
 // se deposita en una variable el contenido de la función obtenerAutos
 const autos = obtenerAutos();
 
 //Event Listener
 /* función que permite cargar el docuemnto */
 document.addEventListener('DOMContentLoaded', () => {
-    // Cuando se cargue la función mostrarAtos se pasa como parametro todos los automoviles
+    // Cuando se cargue la función mostrarAutos se pasa como parametro todos los automoviles
     mostrarAutos(autos);
 });
 
+//Event listener para el formulario
+const marca = document.querySelector('#marca');
+marca.addEventListener('input', e => {
+    //Al seleccionar marca se va llenado el objeto datosBusqueda
+    datosBusqueda.marca = e.target.value;
+
+    //Mandar llamar la función de filtrar autos
+    filtrarAuto();
+})
+
 function mostrarAutos(autos) {
 
-    // Leer el elemento resultado
+    // Leer el elemento resultado que es donde se inyectara el codigo html
     const contenedor = document.querySelector('#resultado');
 
     autos.forEach(auto => {
+        // Crear el elemento HTML donde apareceran los datos
         const autoHTML = document.createElement('p');
+        // Crear el contenido que aparecera en el elemento HTML
         autoHTML.innerHTML = `
             <p>${auto.marca} ${auto.modelo} - ${auto.year} - ${auto.puertas} Puertas -
             Trasmisión: ${auto.transmision} - Precio: ${auto.precio} - Color: ${auto.color} </p>
         `;
+        // Inyectar el contenido HTML al documento
         contenedor.appendChild(autoHTML);
     });
 }
+
+
+function mostrarAuto(autos) {
+
+
+}
+
+function filtrarAuto() {
+    // Corroborando que se esta mandando llamar a la función
+    console.log('Desde filtrar auto')
+}
+
