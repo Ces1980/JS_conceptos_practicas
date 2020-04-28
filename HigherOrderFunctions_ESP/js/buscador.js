@@ -198,7 +198,16 @@ function mostrarAuto(autos) {
 }
 
 function filtrarAuto() {
-    // Corroborando que se esta mandando llamar a la función
-    console.log('Desde filtrar auto')
+    const resultado = obtenerAutos().filter(filtrarMarca);
+    console.log(resultado);
+}
+
+function filtrarMarca(auto) {
+
+    if (datosBusqueda.marca) {
+        return auto.marca === datosBusqueda.marca;
+    } else {
+        console.log('nada')
+    }
 }
 
