@@ -180,7 +180,7 @@ El método reduce() aplica una función a un acumulador y a cada
 valor de una array (de izquierda a derecha) para reducirlo a un único valor.
 */
 //Sintaxis
-console.log(`
+/* console.log(`
 			Sintaxis:  arreglo.reduce((totalValor, integrantesArreglo) => valorActual + integrantes, valorInicial)
 
 					   resultado = autos.reduce((total, auto) => total + auto.precio, 0)
@@ -196,7 +196,12 @@ console.log(resultado)
 const numeros = [, 1, 2, 3];
 let resultado1 = numeros.reduce((total, numero) => total + numero, 0);
 console.log(resultado1)
-
+ */
 // some
 
+let resultado = autos.some(auto => auto.marca === 'BMW');
+let resultado1 = autos.some(auto => auto.precio > 50000);
+
+console.log(resultado)
+console.log(resultado1)
 
