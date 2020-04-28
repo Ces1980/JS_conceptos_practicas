@@ -130,20 +130,28 @@ const autos = [
 /* autos.forEach(auto => {
 	console.log(auto);
 }); */
-autos.forEach(auto => console.log(auto));
+// autos.forEach(auto => console.log(auto));
 
 /*		Ver valores especifico de un atributo de los
 objetos que se encuentran en el arreglo		*/
-let resultado = [];
-autos.forEach(auto => {
-	if (auto.color === 'Negro') {
-		resultado.push(auto);
-	}
-});
+// let resultado = [];
+// autos.forEach(auto => {
+// 	if (auto.color === 'Negro') {
+// 		resultado.push(auto);
+// 	}
+// });
 
-console.log(resultado)
+// console.log(resultado)
 
+/* autos.forEach(auto => {
+	console.log(auto)
+}); */
 // map
+// let resultado = autos.map(auto => {
+// 	return auto;
+// });
+let resultado = autos.map(auto => auto);
+console.log(resultado)
 
 // filter
 
