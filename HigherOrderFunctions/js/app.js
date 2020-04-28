@@ -171,10 +171,31 @@ objetos que se encuentran en el arreglo		*/
 
 // find
 // let resultado = autos.find(auto => auto.marca === 'BMW');
-let resultado = autos.find(auto => auto.modelo === 'Mustang');
-console.log(resultado)
+// let resultado = autos.find(auto => auto.modelo === 'Mustang');
+// console.log(resultado)
 
 // reduce
+/*
+El método reduce() aplica una función a un acumulador y a cada
+valor de una array (de izquierda a derecha) para reducirlo a un único valor.
+*/
+//Sintaxis
+console.log(`
+			Sintaxis:  arreglo.reduce((totalValor, integrantesArreglo) => valorActual + integrantes, valorInicial)
+
+					   resultado = autos.reduce((total, auto) => total + auto.precio, 0)
+
+
+					   					const numeros = [, 1, 2, 3]
+					   resultado1 = numeros.reduce((total, numero) => total + numero, 0)
+					   					resultado1 = 6
+`);
+let resultado = autos.reduce((total, auto) => total + auto.precio, 0);
+console.log(resultado)
+
+const numeros = [, 1, 2, 3];
+let resultado1 = numeros.reduce((total, numero) => total + numero, 0);
+console.log(resultado1)
 
 // some
 
