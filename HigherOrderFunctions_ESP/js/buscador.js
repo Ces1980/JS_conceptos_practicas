@@ -171,6 +171,16 @@ marca.addEventListener('input', e => {
 
     //Mandar llamar la función de filtrar autos
     filtrarAuto();
+});
+
+const year = document.querySelector('#year');
+year.addEventListener('input', e => {
+    //Al seleccionar marca se va llenado el objeto datosBusqueda
+    // Number permite que el valor de year sea almacenado como numero
+    datosBusqueda.year = Number(e.target.value);
+
+    //Mandar llamar la función de filtrar autos
+    filtrarAuto();
 })
 
 function mostrarAutos(autos) {
@@ -178,6 +188,13 @@ function mostrarAutos(autos) {
     // Leer el elemento resultado que es donde se inyectara el codigo html
     const contenedor = document.querySelector('#resultado');
 
+    //Limpiar los resultados anteriores
+    while (contenedor.firstChild) {
+        // removeChild --> remueve un nodo de html  y se pasa por parametro el nodo que se quiere remover
+        contenedor.removeChild(contenedor.firstChild);
+    }
+
+    // Construir el HTML de los autos
     autos.forEach(auto => {
         // Crear el elemento HTML donde apareceran los datos
         const autoHTML = document.createElement('p');
@@ -198,8 +215,13 @@ function mostrarAuto(autos) {
 }
 
 function filtrarAuto() {
-    const resultado = obtenerAutos().filter(filtrarMarca);
-    console.log(resultado);
+    const resultado = obtenerAutos().filter(filtrarMarca).filter(filtrarYear);
+
+    if (resultado.length) {
+        mostrarAutos(resultado);
+    } else {
+        alert('No hay resultados.....');
+    }
 }
 
 function filtrarMarca(auto) {
@@ -207,7 +229,15 @@ function filtrarMarca(auto) {
     if (datosBusqueda.marca) {
         return auto.marca === datosBusqueda.marca;
     } else {
-        console.log('nada')
+        return auto;
+    }
+}
+
+function filtrarYear(auto) {
+    if (datosBusqueda.year) {
+        return auto.year === datosBusqueda.year;
+    } else {
+        return auto;
     }
 }
 
