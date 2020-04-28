@@ -154,22 +154,25 @@ objetos que se encuentran en el arreglo		*/
 // console.log(resultado)
 
 // filter
-let resultado = autos.filter(auto => auto.marca === 'BMW');
-let resultado1 = autos.filter(auto => auto.color === 'Rojo');
-let resultado2 = autos.filter(auto => auto.year === 2018);
-console.log(resultado);
-console.log(resultado1);
-console.log(resultado2)
+// let resultado = autos.filter(auto => auto.marca === 'BMW');
+// let resultado1 = autos.filter(auto => auto.color === 'Rojo');
+// let resultado2 = autos.filter(auto => auto.year === 2018);
+// console.log(resultado);
+// console.log(resultado1);
+// console.log(resultado2)
 
-console.log(`
-		Revisar dos condiciones con .filter
+// console.log(`
+// 		Revisar dos condiciones con .filter
 
-`);
+// `);
 
-let resultado3 = autos.filter(auto => auto.year >= 2015 && auto.year <= 2017);
-console.log(resultado3)
+// let resultado3 = autos.filter(auto => auto.year >= 2015 && auto.year <= 2017);
+// console.log(resultado3)
 
 // find
+// let resultado = autos.find(auto => auto.marca === 'BMW');
+let resultado = autos.find(auto => auto.modelo === 'Mustang');
+console.log(resultado)
 
 // reduce
 
