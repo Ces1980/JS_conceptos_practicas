@@ -123,8 +123,25 @@ const autos = [
 	},
 	{ marca: 'Audi', modelo: 'A4', year: 2016, precio: 30000, puertas: 4, color: 'Azul', transmision: 'automatico' }
 ];
-
+// for (let index = 0; index < autos.length; index++) {
+// 	console.log(autos[index].marca);
+// }
 // forEach
+/* autos.forEach(auto => {
+	console.log(auto);
+}); */
+autos.forEach(auto => console.log(auto));
+
+/*		Ver valores especifico de un atributo de los
+objetos que se encuentran en el arreglo		*/
+let resultado = [];
+autos.forEach(auto => {
+	if (auto.color === 'Negro') {
+		resultado.push(auto);
+	}
+});
+
+console.log(resultado)
 
 // map
 
