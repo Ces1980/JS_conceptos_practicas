@@ -150,10 +150,24 @@ objetos que se encuentran en el arreglo		*/
 // let resultado = autos.map(auto => {
 // 	return auto;
 // });
-let resultado = autos.map(auto => auto);
-console.log(resultado)
+// let resultado = autos.map(auto => auto);
+// console.log(resultado)
 
 // filter
+let resultado = autos.filter(auto => auto.marca === 'BMW');
+let resultado1 = autos.filter(auto => auto.color === 'Rojo');
+let resultado2 = autos.filter(auto => auto.year === 2018);
+console.log(resultado);
+console.log(resultado1);
+console.log(resultado2)
+
+console.log(`
+		Revisar dos condiciones con .filter
+
+`);
+
+let resultado3 = autos.filter(auto => auto.year >= 2015 && auto.year <= 2017);
+console.log(resultado3)
 
 // find
 
