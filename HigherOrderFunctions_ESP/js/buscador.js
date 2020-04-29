@@ -165,6 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
     mostrarAutos(autos);
 });
 
+
 //Event listener para el formulario
 const marca = document.querySelector('#marca');
 marca.addEventListener('input', e => {
@@ -235,16 +236,22 @@ color.addEventListener('input', e => {
     filtrarAuto();
 });
 
-function mostrarAutos(autos) {
-
+function limpiarHTML() {
     // Leer el elemento resultado que es donde se inyectara el codigo html
     const contenedor = document.querySelector('#resultado');
-
     //Limpiar los resultados anteriores
     while (contenedor.firstChild) {
         // removeChild --> remueve un nodo de html  y se pasa por parametro el nodo que se quiere remover
         contenedor.removeChild(contenedor.firstChild);
     }
+}
+
+function mostrarAutos(autos) {
+
+    limpiarHTML();
+
+    // Leer el elemento resultado que es donde se inyectara el codigo html
+    const contenedor = document.querySelector('#resultado');
 
     // Construir el HTML de los autos
     autos.forEach(auto => {
@@ -261,9 +268,13 @@ function mostrarAutos(autos) {
 }
 
 
-function mostrarAuto(autos) {
+function noResultado() {
+    limpiarHTML();
 
-
+    const noResultado = document.createElement('div');
+    noResultado.classList.add('alerta', 'error');
+    noResultado.appendChild(document.createTextNode('No hay resultados....'));
+    document.querySelector('#resultado').appendChild(noResultado);
 }
 
 function filtrarAuto(auto) {
@@ -273,9 +284,11 @@ function filtrarAuto(auto) {
     if (resultado.length) {
         mostrarAutos(resultado);
     } else {
-        return auto;
+        noResultado();
     }
 }
+
+
 
 function filtrarMarca(auto) {
 
