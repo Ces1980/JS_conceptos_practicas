@@ -1,10 +1,10 @@
 //EXPRESIONES REGULARES
 
-/* 
-Las expresiones, son un lenguaje utilizado para describir patrones en cadenas 
-de caracteres. Forman un pequeño y separado lenguaje, 
-que está incluido en JavaScript (y en la gran mayoría de lenguajes de programación). 
-No es un lenguaje fácil de leer, pero es una herramienta muy poderosa que 
+/*
+Las expresiones, son un lenguaje utilizado para describir patrones en cadenas
+de caracteres. Forman un pequeño y separado lenguaje,
+que está incluido en JavaScript (y en la gran mayoría de lenguajes de programación).
+No es un lenguaje fácil de leer, pero es una herramienta muy poderosa que
 simplifica mucho tareas de procesado de cadenas de caracteres.
 */
 let valor, expReg;
@@ -30,7 +30,7 @@ valor= '10:30 AM';
 expReg = /\d+/;
 valor= 12365897451254;
 
-//NEgar la expresión 
+//NEgar la expresión
 expReg =/[^0-9]/;
 valor = 'hola';
 
