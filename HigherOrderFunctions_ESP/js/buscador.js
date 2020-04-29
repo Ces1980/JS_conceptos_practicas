@@ -181,7 +181,27 @@ year.addEventListener('input', e => {
 
     //Mandar llamar la función de filtrar autos
     filtrarAuto();
-})
+});
+
+const minimo = document.querySelector('#minimo');
+minimo.addEventListener('input', e => {
+    //Al seleccionar marca se va llenado el objeto datosBusqueda
+    // Number permite que el valor de year sea almacenado como numero
+    datosBusqueda.minimo = Number(e.target.value);
+
+    //Mandar llamar la función de filtrar autos
+    filtrarAuto();
+});
+
+const maximo = document.querySelector('#maximo');
+maximo.addEventListener('input', e => {
+    //Al seleccionar marca se va llenado el objeto datosBusqueda
+    // Number permite que el valor de year sea almacenado como numero
+    datosBusqueda.maximo = Number(e.target.value);
+
+    //Mandar llamar la función de filtrar autos
+    filtrarAuto();
+});
 
 function mostrarAutos(autos) {
 
@@ -214,13 +234,13 @@ function mostrarAuto(autos) {
 
 }
 
-function filtrarAuto() {
-    const resultado = obtenerAutos().filter(filtrarMarca).filter(filtrarYear);
+function filtrarAuto(auto) {
+    const resultado = obtenerAutos().filter(filtrarMarca).filter(filtrarYear).filter(filtrarMinimo).filter(filtrarMaximo);
 
     if (resultado.length) {
         mostrarAutos(resultado);
     } else {
-        alert('No hay resultados.....');
+        return auto;
     }
 }
 
@@ -241,3 +261,18 @@ function filtrarYear(auto) {
     }
 }
 
+function filtrarMinimo(auto) {
+    if (datosBusqueda.minimo) {
+        return auto.precio >= datosBusqueda.minimo;
+    } else {
+        return auto;
+    }
+}
+
+function filtrarMaximo(auto) {
+    if (datosBusqueda.maximo) {
+        return auto.precio <= datosBusqueda.maximo;
+    } else {
+        return auto;
+    }
+}
