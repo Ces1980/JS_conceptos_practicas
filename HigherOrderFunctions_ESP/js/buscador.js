@@ -156,7 +156,9 @@ let datosBusqueda = {
 // se deposita en una variable el contenido de la función obtenerAutos
 const autos = obtenerAutos();
 
-//Event Listener
+/**
+ * Event Listener
+ * */
 /* función que permite cargar el docuemnto */
 document.addEventListener('DOMContentLoaded', () => {
     // Cuando se cargue la función mostrarAutos se pasa como parametro todos los automoviles
@@ -203,6 +205,36 @@ maximo.addEventListener('input', e => {
     filtrarAuto();
 });
 
+const puertas = document.querySelector('#puertas');
+puertas.addEventListener('input', e => {
+    //Al seleccionar marca se va llenado el objeto datosBusqueda
+    // Number permite que el valor de year sea almacenado como numero
+    datosBusqueda.puertas = Number(e.target.value);
+
+    //Mandar llamar la función de filtrar autos
+    filtrarAuto();
+});
+
+const transmision = document.querySelector('#transmision');
+transmision.addEventListener('input', e => {
+    //Al seleccionar marca se va llenado el objeto datosBusqueda
+    // Number permite que el valor de year sea almacenado como numero
+    datosBusqueda.transmision = e.target.value;
+
+    //Mandar llamar la función de filtrar autos
+    filtrarAuto();
+});
+
+const color = document.querySelector('#color');
+color.addEventListener('input', e => {
+    //Al seleccionar marca se va llenado el objeto datosBusqueda
+    // Number permite que el valor de year sea almacenado como numero
+    datosBusqueda.color = e.target.value;
+
+    //Mandar llamar la función de filtrar autos
+    filtrarAuto();
+});
+
 function mostrarAutos(autos) {
 
     // Leer el elemento resultado que es donde se inyectara el codigo html
@@ -235,7 +267,8 @@ function mostrarAuto(autos) {
 }
 
 function filtrarAuto(auto) {
-    const resultado = obtenerAutos().filter(filtrarMarca).filter(filtrarYear).filter(filtrarMinimo).filter(filtrarMaximo);
+    const resultado = obtenerAutos().filter(filtrarMarca).filter(filtrarYear).filter(filtrarMinimo).filter(filtrarMaximo)
+        .filter(filtrarPuertas).filter(filtrarTransmision).filter(filtrarColor);
 
     if (resultado.length) {
         mostrarAutos(resultado);
@@ -272,6 +305,30 @@ function filtrarMinimo(auto) {
 function filtrarMaximo(auto) {
     if (datosBusqueda.maximo) {
         return auto.precio <= datosBusqueda.maximo;
+    } else {
+        return auto;
+    }
+}
+
+function filtrarPuertas(auto) {
+    if (datosBusqueda.puertas) {
+        return auto.puertas === datosBusqueda.puertas;
+    } else {
+        return auto;
+    }
+}
+
+function filtrarTransmision(auto) {
+    if (datosBusqueda.transmision) {
+        return auto.transmision === datosBusqueda.transmision;
+    } else {
+        return auto;
+    }
+}
+
+function filtrarColor(auto) {
+    if (datosBusqueda.color) {
+        return auto.color === datosBusqueda.color;
     } else {
         return auto;
     }
