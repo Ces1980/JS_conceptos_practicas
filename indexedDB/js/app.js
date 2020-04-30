@@ -2,7 +2,7 @@
 let DB;
 
 //Selectores de la interfaz
-const form = document.querySelector('#formulario'),
+const form = document.querySelector('form'),
     nombreMascota = document.querySelector('#mascota'),
     nombreCliente = document.querySelector('#cliente'),
     telefono = document.querySelector('#telefono'),
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //Si hay un error enviarlo a la consola
     crearDB.onerror = function () {
-        console.err('Hubo un error')
+        console.log('Hubo un error')
     }
     // Si todo esta bien entonces mostrar en consola y asignar la base de datos
     crearDB.onsuccess = function () {
@@ -45,12 +45,21 @@ document.addEventListener('DOMContentLoaded', () => {
         objectStore.createIndex('telefono', 'telefono', { unique: false });
         objectStore.createIndex('fecha', 'fecha', { unique: false });
         objectStore.createIndex('hora', 'hora', { unique: false });
-        objectStore.createIndex('sintoma', 'sintoma', { unique: false });
+        objectStore.createIndex('sintomas', 'sintomas', { unique: false });
 
         console.log('Base de datos creada y lista....')
 
     }
+
+    //Cuando el formulario se envia
+    form.addEventListener('submit', agregarDatos);
+
+    function agregarDatos(e) {
+        e.preventDefault();
+    }
 });
+
+
 
 
 
