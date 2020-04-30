@@ -56,10 +56,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function agregarDatos(e) {
         e.preventDefault();
+
+        const nuevaCita = {
+            mascota: nombreMascota.value,
+            cliente: nombreCliente.value,
+            telefono: telefono.value,
+            fecha: fecha.value,
+            hora: hora.value,
+            sintomas: sintomas.value
+        }
+
+        console.log(nuevaCita)
     }
 });
-
-
 
 
 
