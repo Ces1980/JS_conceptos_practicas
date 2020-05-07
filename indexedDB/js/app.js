@@ -84,6 +84,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         transaction.oncomplete = () => {
             console.log('Cita agregada');
+            // Crear una nueva cita
+            mostrarCitas();
         }
 
         transaction.onerror = () => {
@@ -115,10 +117,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 citaHTML.innerHTML = `
                 <p class="font-weight-bold">Mascota: <span class="font-weight-normal">${cursor.value.mascota}</span></p>
+                <p class="font-weight-bold">Dueño: <span class="font-weight-normal">${cursor.value.cliente}</span></p>
+                <p class="font-weight-bold">Teléfono: <span class="font-weight-normal">${cursor.value.telefono}</span></p>
+                <p class="font-weight-bold">Fecha: <span class="font-weight-normal">${cursor.value.fecha}</span></p>
+                <p class="font-weight-bold">Hora: <span class="font-weight-normal">${cursor.value.hora}</span></p>
+                <p class="font-weight-bold">Sintomas: <span class="font-weight-normal">${cursor.value.sintomas}</span></p>
+
                 `;
 
                 // append en el padre
                 citas.appendChild(citaHTML);
+                // Esta instriccuón permite que se sigan incrustando todo el contenido html y no se que de con el primer registro
                 cursor.continue();
             }
         }
